@@ -226,7 +226,8 @@ var projects = [
     year: '2024',
     role: 'Creative Technologist',
     tools: 'TouchDesigner',
-    cover: 'thumbnail_3.jpg',
+    // UPDATE: Gunakan ekstensi .mp4 di sini agar script merender tag <video>
+    cover: 'thumbnail_3.mp4',
     body: '<h2>Context</h2><p>Describe the conceptual background of this generative piece.</p><h2>The Fix</h2><p>Detail the node-based logic and real-time parameters used to achieve the visual effect.</p><h2>Impact</h2><p>Where was it showcased or how did it push your technical boundaries?</p>'
   },
   {
@@ -252,7 +253,15 @@ function openProject(idx) {
   document.getElementById('overlayYear').textContent = p.year;
   document.getElementById('overlayRole').textContent = p.role;
   document.getElementById('overlayTools').textContent = p.tools;
-  document.getElementById('overlayCover').innerHTML = '<img src="' + p.cover + '" alt="Project Cover">';
+  
+  // UPDATE: Logic untuk cek file cover video atau gambar
+  var coverElement = document.getElementById('overlayCover');
+  if (p.cover.endsWith('.mp4') || p.cover.endsWith('.webm')) {
+    coverElement.innerHTML = '<video src="' + p.cover + '" autoplay loop muted playsinline></video>';
+  } else {
+    coverElement.innerHTML = '<img src="' + p.cover + '" alt="Project Cover">';
+  }
+  
   document.getElementById('overlayBody').innerHTML = p.body;
   overlay.classList.add('active');
   overlay.scrollTop = 0;
