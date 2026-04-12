@@ -1,7 +1,49 @@
 /* script.js */
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Hamburger Menu Logic
+  
+  // --- RAW MODE TOGGLE LOGIC ---
+  const themeToggle = document.getElementById('themeToggle');
+  const themeToggleMobile = document.getElementById('themeToggleMobile');
+  const body = document.body;
+
+  function setRawMode(isRaw) {
+    if (isRaw) {
+      body.classList.add('raw-mode');
+      localStorage.setItem('theme', 'raw');
+      if (themeToggle) themeToggle.textContent = 'Clean Mode';
+      if (themeToggleMobile) themeToggleMobile.textContent = 'Clean Mode';
+    } else {
+      body.classList.remove('raw-mode');
+      localStorage.setItem('theme', 'clean');
+      if (themeToggle) themeToggle.textContent = 'Raw Mode';
+      if (themeToggleMobile) themeToggleMobile.textContent = 'Toggle Raw Mode';
+    }
+  }
+
+  // Cek apakah user sebelumnya udah milih raw mode
+  if (localStorage.getItem('theme') === 'raw') {
+    setRawMode(true);
+  }
+
+  // Event listener desktop
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      const isCurrentlyRaw = body.classList.contains('raw-mode');
+      setRawMode(!isCurrentlyRaw);
+    });
+  }
+
+  // Event listener mobile menu
+  if (themeToggleMobile) {
+    themeToggleMobile.addEventListener('click', function(e) {
+      e.preventDefault();
+      const isCurrentlyRaw = body.classList.contains('raw-mode');
+      setRawMode(!isCurrentlyRaw);
+    });
+  }
+
+  // --- HAMBURGER MENU LOGIC ---
   var hamburger = document.getElementById('hamburger');
   var mobileMenu = document.getElementById('mobileMenu');
   
@@ -12,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Scroll Actions
+  // --- SCROLL ACTIONS ---
   var mobileCta = document.getElementById('mobileCta');
   var backToTop = document.getElementById('backToTop');
   var heroElement = document.querySelector('.hero') || document.querySelector('.about-hero');
@@ -95,7 +137,6 @@ function openProject(idx) {
   document.getElementById('overlayRole').textContent = p.role;
   document.getElementById('overlayTools').textContent = p.tools;
   
-  // INI YANG DIBENERIN BIAR GAMBAR COVER DI POPUP MUNCUL
   document.getElementById('overlayCover').innerHTML = '<img src="' + p.cover + '" alt="Project Cover">';
   
   document.getElementById('overlayBody').innerHTML = p.body;
