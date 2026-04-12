@@ -7,6 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@400;500&family=Kalam:wght@400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script>
+    if (sessionStorage.getItem('visitedBefore')) {
+      document.documentElement.classList.add('preloader-skipped');
+    }
+  </script>
 </head>
 <body>
 

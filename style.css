@@ -16,6 +16,11 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Hilangkan preloader seketika kalau tanda sudah ada */
+.preloader-skipped #generative-preloader {
+  display: none !important;
+}
+
 /* ===== GENERATIVE PRELOADER ===== */
 .preloader {
   position: fixed;

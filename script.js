@@ -1,66 +1,63 @@
 /* script.js */
 
 // --- GENERATIVE PRELOADER LOGIC ---
-// Fungsi ini jalan langsung tanpa nunggu DOMContentLoaded
 (function() {
   const preloader = document.getElementById('generative-preloader');
   if (!preloader) return;
 
+  // 1. Cek apakah di session ini sudah pernah muncul preloader
+  if (sessionStorage.getItem('visitedBefore')) {
+    preloader.style.display = 'none'; // Langsung hilangkan tanpa animasi
+    document.body.style.overflow = 'auto'; // Pastikan bisa scroll
+    return;
+  }
+
+  // 2. Jika baru pertama kali buka (dalam session ini), jalankan animasi
+  document.body.style.overflow = 'hidden'; // Kunci scroll
+
   const preloaderText = document.getElementById('preloader-text');
   const preloaderBar = document.getElementById('preloader-bar');
-
-  // String yang bakal diacak ala glitch
   const finalString = "INITIATING_SYSTEM...";
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
   
   let progress = 0;
   let textIterations = 0;
-  const maxIterations = 20; // Seberapa lama glitch teksnya jalan
 
-  // 1. Animasi Glitch Text
+  // Animasi Glitch Text
   const textInterval = setInterval(() => {
     preloaderText.innerText = finalString.split("").map((char, index) => {
       if (index < textIterations) return finalString[index];
       return chars[Math.floor(Math.random() * chars.length)];
     }).join("");
 
-    if (textIterations >= finalString.length) {
-      clearInterval(textInterval);
-    }
-    textIterations += 1 / 2; // Kecepatan reveal karakter asli
+    if (textIterations >= finalString.length) clearInterval(textInterval);
+    textIterations += 1 / 2;
   }, 40);
 
-  // 2. Fake Loading Progress (Karena ini static site, kita bikin fake progress bar)
-  // Kalau lu beneran load heavy asset (video/3D), lu bisa ganti pake event 'load' dari window
+  // Fake Loading Progress
   const progressInterval = setInterval(() => {
-    // Progress bar naik secara random biar keliatan kayak proses beneran
     progress += Math.random() * 15; 
-    
     if (progress > 100) progress = 100;
     preloaderBar.style.width = `${progress}%`;
 
     if (progress === 100) {
       clearInterval(progressInterval);
       
-      // Tunggu sebentar pas udah 100% sebelum ngilangin preloader
       setTimeout(() => {
         preloaderText.innerText = "SYSTEM_READY";
         
         setTimeout(() => {
            preloader.classList.add('hidden');
-           // Balikin overflow body biar bisa scroll lagi
            document.body.style.overflow = 'auto';
-        }, 400); // Jeda ngilangin layar
-
-      }, 300); // Jeda tulisan SYSTEM_READY
+           // 3. SET TANDA: Sudah pernah load di session ini
+           sessionStorage.setItem('visitedBefore', 'true');
+        }, 400);
+      }, 300);
     }
-  }, 100); // Update bar tiap 100ms
+  }, 100);
 })();
 
-// Penting: Kunci scroll body saat preloader jalan
-document.body.style.overflow = 'hidden';
-
-// ... (KODE LU YANG LAIN MULAI DARI document.addEventListener('DOMContentLoaded' ...) DI SINI) ...
+// ... (SISA KODE LU SEPERTI BIASA) ...
 
 /* script.js */
 
