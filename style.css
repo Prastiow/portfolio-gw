@@ -274,6 +274,44 @@ footer { border-top: 0.5px solid var(--border); padding: 3rem 0 2.5rem; }
 
 /* ===== RESPONSIVE ===== */
 
+/* ===== BACKGROUND BLUR (AURORA EFFECT) ===== */
+.hero-visuals::before,
+.hero-visuals::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(65px); /* Tingkat blur/kehalusan */
+  z-index: 0; /* Pastikan di bawah polaroid */
+  opacity: 0.5; /* Agak transparan biar elegan */
+  animation: auroraFloat 8s ease-in-out infinite alternate;
+  pointer-events: none; /* Biar nggak nutupin area klik foto */
+}
+
+/* Shape 1: Warm Peach (Kreatif & Hangat) */
+.hero-visuals::before {
+  width: 320px;
+  height: 320px;
+  background: #ffc3a0;
+  top: 0%;
+  left: 5%;
+}
+
+/* Shape 2: Soft Emerald (Nyambung sama dot hijau) */
+.hero-visuals::after {
+  width: 280px;
+  height: 280px;
+  background: #c3ebd2;
+  bottom: 0%;
+  right: 5%;
+  animation-delay: -4s; /* Geraknya dibikin gantian sama shape 1 */
+}
+
+/* Animasi mengambang pelan */
+@keyframes auroraFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -30px) scale(1.1); }
+}
+
 /* Menghilangkan Polaroid mulai dari Tablet 820px ke bawah */
 @media (max-width: 820px) {
   .hero { 
