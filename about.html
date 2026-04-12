@@ -3,138 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Tri Prastio Nugroho</title>
+  <title>About — Tri Prastio Nugroho</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #f9f8f5; --bg-card: #ffffff; --text: #111110;
-      --text-secondary: #6b6b68; --text-tertiary: #a0a09c;
-      --border: rgba(0,0,0,0.08); --border-hover: rgba(0,0,0,0.18);
-      --nav-bg: rgba(249,248,245,0.88); --green: #3caf70;
-      --radius-md: 10px; --radius-lg: 16px;
-    }
-    body.dark {
-      --bg: #0f0f0e; --bg-card: #1a1a18; --text: #f0efe9;
-      --text-secondary: #8a8a86; --text-tertiary: #555552;
-      --border: rgba(255,255,255,0.07); --border-hover: rgba(255,255,255,0.16);
-      --nav-bg: rgba(15,15,14,0.88);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; transition: background-color 0.3s, color 0.3s; }
-
-    nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); transition: background-color 0.3s, border-color 0.3s; }
-    .nav-inner { max-width: 920px; margin: 0 auto; padding: 0 2rem; height: 56px; display: flex; justify-content: space-between; align-items: center; }
-    .nav-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--text); }
-    .nav-logo-avatar { width: 28px; height: 28px; border-radius: 50%; overflow: hidden; border: 1.5px solid var(--border-hover); flex-shrink: 0; }
-    .nav-logo-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .nav-logo-name { font-size: 14px; font-weight: 500; letter-spacing: -0.01em; }
-    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
-    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
-    .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--text); }
-    .theme-toggle { width: 36px; height: 20px; border-radius: 99px; border: 0.5px solid var(--border-hover); background: var(--bg-card); cursor: pointer; flex-shrink: 0; position: relative; transition: background-color 0.3s, border-color 0.3s; padding: 0; }
-    .theme-toggle::after { content: ''; position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; border-radius: 50%; background: var(--text-secondary); transition: transform 0.25s ease, background-color 0.3s; }
-    body.dark .theme-toggle::after { transform: translateX(16px); background: var(--text); }
-    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 32px; height: 32px; background: none; border: none; cursor: pointer; padding: 4px; }
-    .hamburger span { display: block; width: 100%; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; flex-direction: column; border-top: 0.5px solid var(--border); background: var(--nav-bg); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-    .mobile-menu.open { max-height: 220px; }
-    .mobile-menu a { font-size: 14px; color: var(--text-secondary); text-decoration: none; padding: 14px 1.25rem; border-bottom: 0.5px solid var(--border); transition: color 0.2s; }
-    .mobile-menu a:hover { color: var(--text); }
-
-    .container { max-width: 920px; margin: 0 auto; padding: 0 2rem; }
-    hr { border: none; border-top: 0.5px solid var(--border); }
-
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* ===== HERO ===== */
-    .about-hero {
-      padding: 5rem 0 4rem;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-      animation: fadeUp 0.5s ease both;
-    }
-    .about-hero-text {}
-    .about-label { font-size: 11px; font-family: 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 1.5rem; }
-    .about-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.5rem; }
-    .about-hero h1 em { font-style: italic; }
-    .about-hero-bio { font-size: 16px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem; }
-    .about-hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-    .btn { padding: 10px 22px; border-radius: var(--radius-md); font-size: 13px; font-weight: 500; font-family: 'Plus Jakarta Sans', sans-serif; cursor: pointer; text-decoration: none; display: inline-block; border: 0.5px solid var(--border-hover); color: var(--text); background: var(--bg-card); transition: all 0.2s; }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary { background: var(--text); color: var(--bg); border-color: var(--text); }
-    .btn-primary:hover { opacity: 0.82; }
-
-    .about-hero-photo {
-      aspect-ratio: 3/4; border-radius: var(--radius-lg);
-      overflow: hidden; border: 0.5px solid var(--border);
-      background: var(--bg-card);
-      animation: fadeUp 0.5s ease 0.1s both;
-    }
-    .about-hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    /* ===== ABOUT BODY ===== */
-    .about-body { padding: 5rem 0; }
-    .about-body-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; }
-    .about-sidebar {}
-    .sidebar-label { font-size: 11px; font-family: 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 1.5rem; }
-    .sidebar-list { display: flex; flex-direction: column; gap: 0; }
-    .sidebar-item { padding: 0.9rem 0; border-bottom: 0.5px solid var(--border); }
-    .sidebar-item:first-child { border-top: 0.5px solid var(--border); }
-    .sidebar-item-label { font-size: 10px; font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 3px; }
-    .sidebar-item-value { font-size: 14px; color: var(--text-secondary); }
-
-    .about-main {}
-    .about-section { margin-bottom: 3.5rem; }
-    .about-section-label { font-size: 11px; font-family: 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 1.25rem; }
-    .about-section p { font-size: 16px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.2rem; }
-    .about-section p:last-child { margin-bottom: 0; }
-
-    /* Experience timeline */
-    .exp-list { display: flex; flex-direction: column; gap: 0; }
-    .exp-item { display: grid; grid-template-columns: 90px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 0.5px solid var(--border); }
-    .exp-item:first-child { border-top: 0.5px solid var(--border); }
-    .exp-year { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text-tertiary); padding-top: 2px; }
-    .exp-role { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 3px; }
-    .exp-company { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
-    .exp-desc { font-size: 13px; color: var(--text-tertiary); line-height: 1.6; }
-
-    /* Values pills */
-    .values-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
-    .value-pill { padding: 7px 14px; border-radius: 99px; border: 0.5px solid var(--border); background: var(--bg-card); font-size: 13px; color: var(--text-secondary); transition: border-color 0.2s, color 0.2s; }
-    .value-pill:hover { border-color: var(--border-hover); color: var(--text); }
-
-    /* ===== FOOTER ===== */
-    footer { border-top: 0.5px solid var(--border); padding: 3rem 0 2.5rem; }
-    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
-    .footer-cta { font-size: 20px; font-weight: 300; letter-spacing: -0.02em; max-width: 300px; line-height: 1.3; }
-    .footer-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
-    .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; font-family: 'DM Mono', monospace; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--text); }
-    .footer-copy { font-size: 12px; color: var(--text-tertiary); font-family: 'DM Mono', monospace; }
-
-    @media (max-width: 680px) {
-      .nav-inner { padding: 0 1.25rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .mobile-menu { display: flex; }
-      .container { padding: 0 1.25rem; }
-      .about-hero { grid-template-columns: 1fr; padding: 3rem 0 2.5rem; gap: 2rem; }
-      .about-hero h1 { font-size: 1.9rem; }
-      .about-hero-bio { font-size: 15px; }
-      .about-hero-photo { aspect-ratio: 4/3; order: -1; }
-      .about-hero-actions { gap: 8px; }
-      .about-body { padding: 3rem 0; }
-      .about-body-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .exp-item { grid-template-columns: 70px 1fr; gap: 1rem; }
-      .footer-links { align-items: flex-start; }
-      .footer-inner { flex-direction: column; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -145,9 +17,10 @@
     </a>
     <div class="nav-right">
       <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html" class="active">About</a>
+        <a href="index.html" class="magnetic">Home</a>
+        <a href="about.html" class="magnetic active">About</a>
       </div>
+      <a href="https://drive.google.com/uc?export=download&id=1M-jESXvJuOaxmCx4xc4DV-IjsMb2XRLn" class="mobile-cta" id="mobileCta" target="_blank">CV</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -165,16 +38,19 @@
       <div class="about-label">About me</div>
       <h1>Designing with <em>intention,</em><br>building with craft.</h1>
       <p class="about-hero-bio">
-        I'm Tri Prastio Nugroho, a designer and creative technologist based in Jakarta. I work at the intersection of interaction design, motion, and generative visuals to create experiences that feel both purposeful and alive.
+        I'm Tri Prastio Nugroho — a designer and creative technologist based in BSD, Tangerang. I work at the intersection of interaction design, motion, and generative visuals to create experiences that feel both purposeful and alive.
       </p>
       <div class="about-hero-actions">
-        <a href="https://drive.google.com/uc?export=download&id=1M-jESXvJuOaxmCx4xc4DV-IjsMb2XRLn" class="btn btn-primary" target="_blank">Download CV</a>
-        <a href="/cdn-cgi/l/email-protection#344446554740515b43745359555d581a575b59" class="btn">Get in touch</a>
+        <a href="https://drive.google.com/uc?export=download&id=1M-jESXvJuOaxmCx4xc4DV-IjsMb2XRLn" class="btn btn-primary magnetic" target="_blank">Download CV</a>
+        <a href="mailto:contact@example.com" class="btn magnetic">Get in touch</a>
       </div>
     </div>
-    <div class="about-hero-photo">
-      <img src="image_14f6bb.jpg" alt="Tri Prastio Nugroho">
+    
+    <div class="about-hero-photo magnetic" id="profilePhotoWrap">
+      <img src="profile-photo.jpg" alt="Tri Prastio Nugroho Profile Photo">
+      <div class="photo-bubble" id="photoBubble">Say Hi! 👋</div>
     </div>
+    
   </div>
 </div>
 
@@ -189,23 +65,23 @@
         <div class="sidebar-list">
           <div class="sidebar-item">
             <div class="sidebar-item-label">Based in</div>
-            <div class="sidebar-item-value">Jakarta, Indonesia</div>
+            <div class="sidebar-item-value">BSD, Tangerang</div>
           </div>
           <div class="sidebar-item">
             <div class="sidebar-item-label">Available for</div>
-            <div class="sidebar-item-value">Freelance &amp; full time</div>
+            <div class="sidebar-item-value">Freelance &amp; full-time</div>
           </div>
           <div class="sidebar-item">
             <div class="sidebar-item-label">Experience</div>
-            <div class="sidebar-item-value">3+ years</div>
+            <div class="sidebar-item-value">4+ years</div>
           </div>
           <div class="sidebar-item">
             <div class="sidebar-item-label">Focus</div>
-            <div class="sidebar-item-value">Interaction, Motion, Creative Tech</div>
+            <div class="sidebar-item-value">UI/UX, Interaction, Motion</div>
           </div>
           <div class="sidebar-item">
             <div class="sidebar-item-label">Email</div>
-            <div class="sidebar-item-value"><a href="/cdn-cgi/l/email-protection#344446554740515b43745359555d581a575b59" style="color:inherit;"><span class="__cf_email__" data-cfemail="ea9a988b999e8f859daa8d878b8386c4898587">[email&#160;protected]</span></a></div>
+            <div class="sidebar-item-value"><a href="mailto:contact@example.com" style="color:inherit;">contact@example.com</a></div>
           </div>
         </div>
       </div>
@@ -214,35 +90,27 @@
 
         <div class="about-section">
           <div class="about-section-label">Background</div>
-          <p>I'm a designer who believes great design lives at the tension between logic and feeling. My work spans across product design, motion, and creative technology. I use tools like Figma, Framer, TouchDesigner, and Rive to bring ideas to life across different mediums.</p>
-          <p>What drives me is the space between a design and its execution: the micro interaction that makes something feel polished, or the generative system that turns static visuals into something that breathes.</p>
+          <p>I'm a designer who believes great design lives at the tension between logic and feeling. My work spans across product design, motion, and creative technology — I use tools like Figma, Framer, TouchDesigner, and Rive to bring ideas to life across different mediums.</p>
+          <p>What drives me is the space between a design and its execution — the micro-interaction that makes something feel polished, or the generative system that turns static visuals into something that breathes.</p>
         </div>
 
         <div class="about-section">
           <div class="about-section-label">Experience</div>
           <div class="exp-list">
             <div class="exp-item">
-              <div class="exp-year">2024 to Now</div>
+              <div class="exp-year">2024 — Now</div>
               <div class="exp-detail">
-                <div class="exp-role">UI/UX Designer</div>
+                <div class="exp-role">Senior Product Designer</div>
                 <div class="exp-company">Freelance</div>
                 <div class="exp-desc">Working with clients across fintech, consumer apps, and creative industries to design digital products from concept to handoff.</div>
               </div>
             </div>
             <div class="exp-item">
-              <div class="exp-year">2023 to 2024</div>
+              <div class="exp-year">2022 — 2024</div>
               <div class="exp-detail">
-                <div class="exp-role">Product Designer</div>
-                <div class="exp-company">Previous Company</div>
-                <div class="exp-desc">Designed end to end product experiences, led design systems, and collaborated with engineers to ship production quality interfaces.</div>
-              </div>
-            </div>
-            <div class="exp-item">
-              <div class="exp-year">2022 to 2023</div>
-              <div class="exp-detail">
-                <div class="exp-role">Motion &amp; Interaction Designer</div>
-                <div class="exp-company">Previous Studio</div>
-                <div class="exp-desc">Created motion systems, micro interactions, and real time visual experiments for clients and internal creative projects.</div>
+                <div class="exp-role">UI/UX Designer</div>
+                <div class="exp-company">Kompas Daily</div>
+                <div class="exp-desc">Served as the sole UI/UX Designer for the "Kompas NFT" project. Designed end-to-end product experiences, led design systems, and collaborated directly with developers.</div>
               </div>
             </div>
           </div>
@@ -254,7 +122,7 @@
             <span class="value-pill">Design as storytelling</span>
             <span class="value-pill">Motion with purpose</span>
             <span class="value-pill">Craft over quantity</span>
-            <span class="value-pill">Curiosity led exploration</span>
+            <span class="value-pill">Curiosity-led exploration</span>
             <span class="value-pill">Collaboration over ego</span>
             <span class="value-pill">Always shipping</span>
             <span class="value-pill">Details that delight</span>
@@ -274,22 +142,22 @@
     <div class="footer-inner">
       <div class="footer-cta">Let's work together to craft something extraordinary.</div>
       <div class="footer-links">
-        <a href="https://instagram.com/" target="_blank">Instagram ↗</a>
-        <a href="https://linkedin.com/" target="_blank">LinkedIn ↗</a>
-        <a href="/cdn-cgi/l/email-protection#7a0a081b090e1f150d3a1d171b131654191517">Email ↗</a>
+        <a href="https://www.instagram.com/prsteow/?hl=en" target="_blank">Instagram ↗</a>
+        <a href="https://www.linkedin.com/in/triprastion/" target="_blank">LinkedIn ↗</a>
+        <a href="mailto:contact@example.com">Email ↗</a>
       </div>
     </div>
-    <div class="footer-copy">© 2026 Tri Prastio Nugroho</div>
+    <div class="footer-copy">© 2026 — Tri Prastio Nugroho</div>
   </footer>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  var hamburger = document.getElementById('hamburger');
-  var mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
-</script>
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<script src="script.js"></script>
+
 </body>
 </html>

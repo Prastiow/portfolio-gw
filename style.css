@@ -280,7 +280,7 @@ footer { border-top: 0.5px solid var(--border); padding: 3rem 0 2.5rem; }
   .project-row { grid-template-columns: 1fr; min-height: auto; }
   .project-row.reverse { direction: ltr; }
   .project-row-img { min-height: 200px; border-right: none !important; border-left: none !important; border-bottom: 0.5px solid var(--border); }
-  .project-row-info { padding: 1.5rem 1.25rem; }
+  .project-row-info { padding: 2.5rem 1.25rem; }
   .project-row-title { font-size: 1.3rem; }
   .overlay-nav { padding: 0 1.25rem; }
   .overlay-content { padding: 0 1.25rem 4rem; }
