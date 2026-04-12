@@ -16,6 +16,61 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* ===== GENERATIVE PRELOADER ===== */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg); /* Ngikutin tema (Light/Raw) */
+  color: var(--text);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'DM Mono', monospace; /* Vibe terminal/tech */
+  transition: opacity 0.8s cubic-bezier(0.85, 0, 0.15, 1), transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+/* Class untuk hide preloader dengan efek geser ke atas */
+.preloader.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+}
+
+.preloader-content {
+  width: 240px;
+}
+
+.preloader-text {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  min-height: 20px; /* Biar layout ga lompat pas teksnya ngetik */
+}
+
+/* Custom Progress Bar ala Terminal */
+.preloader-progress {
+  width: 100%;
+  height: 2px;
+  background-color: var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.preloader-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: var(--text);
+  transition: width 0.1s linear;
+}
+
 /* ===== NAVIGATION ===== */
 nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); transition: background-color 0.3s, border-color 0.3s; }
 .nav-inner { max-width: 920px; margin: 0 auto; padding: 0 2rem; height: 56px; display: flex; justify-content: space-between; align-items: center; }
