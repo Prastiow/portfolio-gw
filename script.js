@@ -57,9 +57,6 @@
   }, 100);
 })();
 
-// ... (SISA KODE LU SEPERTI BIASA) ...
-
-/* script.js */
 
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -69,28 +66,32 @@ document.addEventListener('DOMContentLoaded', function() {
   magneticElements.forEach((elem) => {
     elem.addEventListener('mousemove', (e) => {
       const rect = elem.getBoundingClientRect();
-      
-      // Hitung posisi mouse relatif terhadap titik tengah elemen
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      
-      // x * 0.3 dan y * 0.3 itu kekuatan tarikannya. 
-      // Makin gede angkanya, makin jauh tombolnya ketarik.
       elem.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
     });
 
     elem.addEventListener('mouseleave', () => {
-      // Balikin ke posisi center (0,0) secara mulus pas mouse keluar
       elem.style.transform = 'translate(0px, 0px)';
     });
   });
   
-  // --- RAW MODE TOGGLE LOGIC ---
+  // --- RAW MODE TOGGLE LOGIC (WITH UI SOUND) ---
   const themeToggle = document.getElementById('themeToggle');
   const themeToggleMobile = document.getElementById('themeToggleMobile');
   const body = document.body;
 
-  function setRawMode(isRaw) {
+  // Inisialisasi Audio (Pastikan file switch.mp3 ada di folder lu)
+  const switchSound = new Audio('switch.mp3');
+  switchSound.volume = 0.4; // Volume diset subtle (40%)
+
+  // Tambahin parameter playSound biar gak auto-play pas awal load page
+  function setRawMode(isRaw, playSound = true) {
+    if (playSound) {
+      switchSound.currentTime = 0;
+      switchSound.play().catch(err => console.log("Audio blocked by browser", err));
+    }
+
     if (isRaw) {
       body.classList.add('raw-mode');
       localStorage.setItem('theme', 'raw');
@@ -106,14 +107,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Cek apakah user sebelumnya udah milih raw mode
   if (localStorage.getItem('theme') === 'raw') {
-    setRawMode(true);
+    setRawMode(true, false); // playSound diset false biar pas refresh gak tiba-tiba bunyi
   }
 
   // Event listener desktop
   if (themeToggle) {
     themeToggle.addEventListener('click', function() {
       const isCurrentlyRaw = body.classList.contains('raw-mode');
-      setRawMode(!isCurrentlyRaw);
+      setRawMode(!isCurrentlyRaw, true);
     });
   }
 
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
     themeToggleMobile.addEventListener('click', function(e) {
       e.preventDefault();
       const isCurrentlyRaw = body.classList.contains('raw-mode');
-      setRawMode(!isCurrentlyRaw);
+      setRawMode(!isCurrentlyRaw, true);
     });
   }
 
@@ -162,8 +163,20 @@ document.addEventListener('DOMContentLoaded', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // --- DYNAMIC TAB TITLE LOGIC ---
+  const originalTitle = document.title;
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      document.title = "Hey, come back! 👀";
+    } else {
+      document.title = originalTitle;
+    }
+  });
+
 });
 
+// --- PROJECT DATA & OVERLAY LOGIC ---
 var projects = [
   {
     tag: 'UI/UX Design',
