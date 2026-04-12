@@ -261,6 +261,48 @@ h1 em { font-style: italic; }
 .value-pill { padding: 7px 14px; border-radius: 99px; border: 0.5px solid var(--border); background: var(--bg-card); font-size: 13px; color: var(--text-secondary); transition: border-color 0.2s, color 0.2s, background-color 0.3s; }
 .value-pill:hover { border-color: var(--border-hover); color: var(--text); }
 
+/* ===== PROJECT FILTERS ===== */
+.project-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 6px 16px;
+  font-size: 13px;
+  font-family: 'DM Mono', monospace;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+.filter-btn.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.project-row.hide {
+  display: none;
+}
+
+.project-row:not(.hide) {
+  border-top: 0.5px solid var(--border);
+}
+.project-row:not(.hide):first-child {
+  border-top: 0.5px solid var(--border);
+}
+
 /* ===== PROJECTS ===== */
 .projects-list { display: flex; flex-direction: column; gap: 0; }
 .project-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 0.5px solid var(--border); text-decoration: none; color: inherit; cursor: pointer; transition: background-color 0.2s; min-height: 340px; }

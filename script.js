@@ -128,6 +128,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // --- PROJECT FILTER LOGIC ---
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectRows = document.querySelectorAll('.project-row');
+
+  if (filterBtns.length > 0) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        const filterValue = this.getAttribute('data-filter');
+
+        projectRows.forEach(row => {
+          if (filterValue === 'all' || row.getAttribute('data-category') === filterValue) {
+            row.classList.remove('hide');
+          } else {
+            row.classList.add('hide');
+          }
+        });
+      });
+    });
+  }
+
   // --- SCROLL ACTIONS & PROGRESS BAR ---
   var mobileCta = document.getElementById('mobileCta');
   var backToTop = document.getElementById('backToTop');
@@ -184,37 +207,37 @@ var projects = [
     role: 'Sole UI/UX Designer',
     tools: 'Figma',
     cover: 'thumbnail_1.jpg',
-    body: '<h2>Overview</h2><p>Designed the end to end UI/UX for the Kompas NFT project within the Product and Development division at Kompas Daily.</p><h2>Process</h2><p>Conducted extensive competitor analysis, established the core design system, and collaborated seamlessly with the engineering team to ensure high fidelity implementation.</p><h2>Outcome</h2><p>Successfully launched the platform, delivering a smooth and intuitive experience for users navigating the NFT ecosystem.</p>'
+    body: '<h2>Context</h2><p>Designed the end to end UI/UX for the Kompas NFT project within the Product and Development division at Kompas Daily.</p><h2>The Fix</h2><p>Conducted extensive competitor analysis, established the core design system, and collaborated seamlessly with the engineering team to ensure high fidelity implementation.</p><h2>Impact</h2><p>Successfully launched the platform, delivering a smooth and intuitive experience for users navigating the NFT ecosystem.</p>'
   },
   {
-    tag: 'Website Design',
-    title: 'Nama Project <em>Kedua</em>',
-    sub: 'A detailed overview of this website design project, the strategy, visual language, and execution that brought it to life.',
+    tag: 'Graphic Design',
+    title: 'Brand <em>Identity</em>',
+    sub: 'A detailed overview of this graphic design project, the strategy, visual language, and execution that brought it to life.',
     year: '2025',
-    role: 'UI/UX Designer',
-    tools: 'Figma, Webflow',
+    role: 'Graphic Designer',
+    tools: 'Illustrator, Photoshop',
     cover: 'thumbnail_2.jpg',
-    body: '<h2>Overview</h2><p>Describe the project context and goals here.</p><h2>Process</h2><p>Walk through your design process.</p><h2>Outcome</h2><p>What was the final result?</p>'
+    body: '<h2>Context</h2><p>Describe the project context and goals here.</p><h2>The Fix</h2><p>Walk through your design process and visual strategy.</p><h2>Impact</h2><p>What was the final result and client reception?</p>'
   },
   {
-    tag: 'Motion Design',
-    title: 'Nama Project <em>Ketiga</em>',
-    sub: 'A motion design project exploring dynamic storytelling through animation and visual rhythm.',
+    tag: 'Visual Art',
+    title: 'Generative <em>Forms</em>',
+    sub: 'An exploratory visual art project focusing on real-time generative patterns and motion.',
     year: '2024',
-    role: 'Motion Designer',
-    tools: 'After Effects, Rive',
+    role: 'Creative Technologist',
+    tools: 'TouchDesigner',
     cover: 'thumbnail_3.jpg',
-    body: '<h2>Overview</h2><p>Describe the project context and goals here.</p><h2>Process</h2><p>Walk through your design process.</p><h2>Outcome</h2><p>What was the final result?</p>'
+    body: '<h2>Context</h2><p>Describe the conceptual background of this generative piece.</p><h2>The Fix</h2><p>Detail the node-based logic and real-time parameters used to achieve the visual effect.</p><h2>Impact</h2><p>Where was it showcased or how did it push your technical boundaries?</p>'
   },
   {
-    tag: 'Mobile Design',
-    title: 'Nama Project <em>Keempat</em>',
-    sub: 'A mobile app design project focused on delightful micro interactions and seamless user flows.',
+    tag: 'UI/UX Design',
+    title: 'Mobile App <em>Flow</em>',
+    sub: 'A mobile app design project focused on delightful micro-interactions and seamless user flows.',
     year: '2024',
     role: 'Product Designer',
     tools: 'Figma, Principle',
     cover: 'thumbnail_4.jpg',
-    body: '<h2>Overview</h2><p>Describe the project context and goals here.</p><h2>Process</h2><p>Walk through your design process.</p><h2>Outcome</h2><p>What was the final result?</p>'
+    body: '<h2>Context</h2><p>Describe the problem users were facing with the mobile app.</p><h2>The Fix</h2><p>Explain how you simplified the flow and integrated micro-interactions.</p><h2>Impact</h2><p>Did engagement or completion rates improve?</p>'
   }
 ];
 

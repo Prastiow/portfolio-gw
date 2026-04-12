@@ -14,18 +14,17 @@
   </script>
 
   <meta name="title" content="Tri Prastio Nugroho — Designer & Creative Technologist">
-<meta name="description" content="I work at the intersection of interaction design, motion, and generative visuals. Based in BSD, Tangerang.">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://heytio.vercel.app/">
-<meta property="og:title" content="Tri Prastio Nugroho — Designer & Creative Technologist">
-<meta property="og:description" content="I work at the intersection of interaction design, motion, and generative visuals. Based in BSD, Tangerang.">
-<meta property="og:image" content="https://heytio.vercel.app/thumbnail_1.jpg"> <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://heytio.vercel.app/">
-<meta property="twitter:title" content="Tri Prastio Nugroho — Designer & Creative Technologist">
-<meta property="twitter:description" content="I work at the intersection of interaction design, motion, and generative visuals.">
-<meta property="twitter:image" content="https://heytio.vercel.app/thumbnail_1.jpg">
-
+  <meta name="description" content="I work at the intersection of interaction design, motion, and generative visuals. Based in BSD, Tangerang.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://heytio.vercel.app/">
+  <meta property="og:title" content="Tri Prastio Nugroho — Designer & Creative Technologist">
+  <meta property="og:description" content="I work at the intersection of interaction design, motion, and generative visuals. Based in BSD, Tangerang.">
+  <meta property="og:image" content="https://heytio.vercel.app/thumbnail_1.jpg"> 
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://heytio.vercel.app/">
+  <meta property="twitter:title" content="Tri Prastio Nugroho — Designer & Creative Technologist">
+  <meta property="twitter:description" content="I work at the intersection of interaction design, motion, and generative visuals.">
+  <meta property="twitter:image" content="https://heytio.vercel.app/thumbnail_1.jpg">
 </head>
 <body>
 
@@ -70,7 +69,7 @@
     <div class="hero-content">
       <div class="hero-tag">
         <span class="dot"></span>
-        Open for collaborations
+        Available for new opportunities
       </div>
       <h1>Designer &amp; <em>Creative</em><br>Technologist</h1>
       <p class="hero-bio">
@@ -122,9 +121,17 @@
 <div class="container">
   <section>
     <div class="section-label">Selected projects</div>
+
+    <div class="project-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="uiux">UI/UX</button>
+      <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+      <button class="filter-btn" data-filter="visual">Visual Art</button>
+    </div>
+
     <div class="projects-list">
 
-      <div class="project-row" onclick="openProject(0)">
+      <div class="project-row" data-category="uiux" onclick="openProject(0)">
         <div class="project-row-img">
           <img src="thumbnail_1.jpg" alt="Kompas NFT Thumbnail">
         </div>
@@ -146,16 +153,16 @@
         </div>
       </div>
 
-      <div class="project-row reverse" onclick="openProject(1)">
+      <div class="project-row reverse" data-category="graphic" onclick="openProject(1)">
         <div class="project-row-img">
-          <img src="thumbnail_2.jpg" alt="Project 2 Thumbnail">
+          <img src="thumbnail_2.jpg" alt="Graphic Design Thumbnail">
         </div>
         <div class="project-row-info">
           <div class="project-row-top">
             <div class="project-row-num">02</div>
-            <div class="project-row-tag">Website Design</div>
-            <div class="project-row-title">Nama Project <em>Kedua</em></div>
-            <div class="project-row-desc">Deskripsi singkat tentang project ini dan dampaknya terhadap pengguna dan bisnis.</div>
+            <div class="project-row-tag">Graphic Design</div>
+            <div class="project-row-title">Brand <em>Identity</em></div>
+            <div class="project-row-desc">A detailed overview of this graphic design project, the strategy, visual language, and execution.</div>
           </div>
           <div class="project-row-bottom">
             <span class="project-row-year">2025</span>
@@ -168,16 +175,16 @@
         </div>
       </div>
 
-      <div class="project-row" onclick="openProject(2)">
+      <div class="project-row" data-category="visual" onclick="openProject(2)">
         <div class="project-row-img">
-          <img src="thumbnail_3.jpg" alt="Project 3 Thumbnail">
+          <img src="thumbnail_3.jpg" alt="Visual Art Thumbnail">
         </div>
         <div class="project-row-info">
           <div class="project-row-top">
             <div class="project-row-num">03</div>
-            <div class="project-row-tag">Motion Design</div>
-            <div class="project-row-title">Nama Project <em>Ketiga</em></div>
-            <div class="project-row-desc">Deskripsi singkat tentang project ini dan dampaknya terhadap pengguna dan bisnis.</div>
+            <div class="project-row-tag">Visual Art</div>
+            <div class="project-row-title">Generative <em>Forms</em></div>
+            <div class="project-row-desc">An exploratory visual art project focusing on real-time generative patterns and motion.</div>
           </div>
           <div class="project-row-bottom">
             <span class="project-row-year">2024</span>
@@ -190,16 +197,16 @@
         </div>
       </div>
 
-      <div class="project-row reverse" onclick="openProject(3)">
+      <div class="project-row reverse" data-category="uiux" onclick="openProject(3)">
         <div class="project-row-img">
-          <img src="thumbnail_4.jpg" alt="Project 4 Thumbnail">
+          <img src="thumbnail_4.jpg" alt="Mobile App Thumbnail">
         </div>
         <div class="project-row-info">
           <div class="project-row-top">
             <div class="project-row-num">04</div>
-            <div class="project-row-tag">Mobile Design</div>
-            <div class="project-row-title">Nama Project <em>Keempat</em></div>
-            <div class="project-row-desc">Deskripsi singkat tentang project ini dan dampaknya terhadap pengguna dan bisnis.</div>
+            <div class="project-row-tag">UI/UX Design</div>
+            <div class="project-row-title">Mobile App <em>Flow</em></div>
+            <div class="project-row-desc">A mobile app design project focused on delightful micro-interactions and seamless user flows.</div>
           </div>
           <div class="project-row-bottom">
             <span class="project-row-year">2024</span>
