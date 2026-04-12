@@ -146,14 +146,15 @@ h1 em { font-style: italic; }
 .hw-float {
   font-family: 'Kalam', cursive;
   font-size: 16px;
-  color: #888;
+  color: #555; /* Warna teks digelapin biar kelihatan */
   position: absolute;
   line-height: 1.3;
-  z-index: 0;
+  z-index: 10;
+  pointer-events: none;
 }
 .hw-top-left { top: -10px; left: -40px; transform: rotate(-5deg); }
 .hw-bottom-right { bottom: 0px; right: -20px; transform: rotate(3deg); }
-.arrow-svg { position: absolute; color: #bbb; }
+.arrow-svg { position: absolute; color: #555; } /* Warna panah disamain sama teks */
 .arrow-1 { bottom: -45px; right: 20px; }
 .arrow-2 { top: -45px; left: 50px; }
 
