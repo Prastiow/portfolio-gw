@@ -34,7 +34,14 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdro
   width: 32px; height: 32px; background: transparent; border: none; cursor: pointer; padding: 4px;
   -webkit-appearance: none; outline: none; -webkit-tap-highlight-color: transparent; z-index: 101;
 }
-.hamburger span { display: block; height: 1.5px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
+.hamburger span { 
+  display: block; 
+  width: 100%; /* Ini kunci biar garisnya nggak kempes di iOS */
+  height: 2px; /* Gw tebelin dikit dari 1.5px biar lebih solid di layar iPhone */
+  background-color: var(--text); 
+  border-radius: 2px; 
+  transition: transform 0.25s ease, opacity 0.2s ease; 
+}
 .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
