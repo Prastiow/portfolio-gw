@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Scroll Actions (Mobile CTA & Back to Top)
+  // Scroll Actions
   var mobileCta = document.getElementById('mobileCta');
   var backToTop = document.getElementById('backToTop');
   var heroElement = document.querySelector('.hero') || document.querySelector('.about-hero');
@@ -37,49 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
-
-  // Effect (Hanya jalan di perangkat PC/Laptop)
-  if (window.matchMedia("(pointer: fine)").matches) {
-    
-    // 1. Magnetic Button Effect
-    var magnetics = document.querySelectorAll('.magnetic');
-    magnetics.forEach(function(elem) {
-      elem.addEventListener('mousemove', function(e) {
-        var rect = elem.getBoundingClientRect();
-        var x = e.clientX - rect.left - rect.width / 2;
-        var y = e.clientY - rect.top - rect.height / 2;
-        elem.style.transform = 'translate(' + (x * 0.3) + 'px, ' + (y * 0.3) + 'px)';
-      });
-      elem.addEventListener('mouseleave', function() {
-        elem.style.transform = 'translate(0px, 0px)';
-      });
-    });
-
-    // 2. Floating Bubble Chat Effect di Foto Profil
-    var photoWrap = document.getElementById('profilePhotoWrap');
-    var photoBubble = document.getElementById('photoBubble');
-
-    if (photoWrap && photoBubble) {
-      photoWrap.addEventListener('mousemove', function(e) {
-        var rect = photoWrap.getBoundingClientRect();
-        var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top;
-        
-        photoBubble.style.left = x + 'px';
-        photoBubble.style.top = y + 'px';
-        photoBubble.style.transform = 'translate(-50%, -50%) scale(1.1)'; 
-      });
-
-      photoWrap.addEventListener('mouseleave', function() {
-        photoBubble.style.left = '80%';
-        photoBubble.style.top = '75%';
-        photoBubble.style.transform = 'translate(-50%, -50%) scale(1)';
-      });
-    }
-  }
 });
 
-// Data Projects
 var projects = [
   {
     tag: 'UI/UX Design',
@@ -89,12 +48,12 @@ var projects = [
     role: 'Sole UI/UX Designer',
     tools: 'Figma',
     cover: 'thumbnail_1.jpg',
-    body: '<h2>Overview</h2><p>Designed the end-to-end UI/UX for the Kompas NFT project within the Product and Development division at Kompas Daily.</p><h2>Process</h2><p>Conducted extensive competitor analysis, established the core design system, and collaborated seamlessly with the engineering team to ensure high-fidelity implementation.</p><h2>Outcome</h2><p>Successfully launched the platform, delivering a smooth and intuitive experience for users navigating the NFT ecosystem.</p>'
+    body: '<h2>Overview</h2><p>Designed the end to end UI/UX for the Kompas NFT project within the Product and Development division at Kompas Daily.</p><h2>Process</h2><p>Conducted extensive competitor analysis, established the core design system, and collaborated seamlessly with the engineering team to ensure high fidelity implementation.</p><h2>Outcome</h2><p>Successfully launched the platform, delivering a smooth and intuitive experience for users navigating the NFT ecosystem.</p>'
   },
   {
     tag: 'Website Design',
     title: 'Nama Project <em>Kedua</em>',
-    sub: 'A detailed overview of this website design project — the strategy, visual language, and execution that brought it to life.',
+    sub: 'A detailed overview of this website design project, the strategy, visual language, and execution that brought it to life.',
     year: '2025',
     role: 'UI/UX Designer',
     tools: 'Figma, Webflow',
@@ -114,7 +73,7 @@ var projects = [
   {
     tag: 'Mobile Design',
     title: 'Nama Project <em>Keempat</em>',
-    sub: 'A mobile app design project focused on delightful micro-interactions and seamless user flows.',
+    sub: 'A mobile app design project focused on delightful micro interactions and seamless user flows.',
     year: '2024',
     role: 'Product Designer',
     tools: 'Figma, Principle',
@@ -135,7 +94,10 @@ function openProject(idx) {
   document.getElementById('overlayYear').textContent = p.year;
   document.getElementById('overlayRole').textContent = p.role;
   document.getElementById('overlayTools').textContent = p.tools;
-  document.getElementById('overlayCover').textContent = p.cover;
+  
+  // INI YANG DIBENERIN BIAR GAMBAR COVER DI POPUP MUNCUL
+  document.getElementById('overlayCover').innerHTML = '<img src="' + p.cover + '" alt="Project Cover">';
+  
   document.getElementById('overlayBody').innerHTML = p.body;
   
   overlay.classList.add('active');
