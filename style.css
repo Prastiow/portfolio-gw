@@ -25,10 +25,8 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdro
 .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover, .nav-links a.active { color: var(--text); }
 
-/* Tombol Download Sticky di Mobile */
 .mobile-cta { display: none; }
 
-/* Hamburger Menu Tweak for Safari iPhone */
 .hamburger { 
   display: none; flex-direction: column; justify-content: center; gap: 5px; 
   width: 32px; height: 32px; background: transparent; border: none; cursor: pointer; padding: 4px;
@@ -59,7 +57,6 @@ section { padding: 5rem 0; }
 .btn-primary { background: var(--text); color: var(--bg); border-color: var(--text); }
 .btn-primary:hover { opacity: 0.82; background: var(--text); }
 
-/* ===== MAGNETIC EFFECT ===== */
 .magnetic {
   display: inline-block;
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.2s, background-color 0.2s, border-color 0.2s;
@@ -68,7 +65,6 @@ section { padding: 5rem 0; }
   transition: transform 0.1s ease-out, color 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
-/* ===== BACK TO TOP BUTTON ===== */
 .back-to-top {
   position: fixed; bottom: 30px; right: 30px; width: 46px; height: 46px;
   border-radius: 50%; background: var(--bg-card); border: 0.5px solid var(--border-hover);
@@ -79,12 +75,12 @@ section { padding: 5rem 0; }
 .back-to-top:hover { transform: translateY(-4px); border-color: var(--text); }
 .back-to-top.visible { opacity: 1; pointer-events: auto; }
 
-/* ===== NEW HERO LAYOUT (HOME) ===== */
+/* ===== HERO (HOME) ===== */
 .hero { 
   padding: 4.5rem 0 4rem; 
   animation: fadeUp 0.6s ease both; 
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr; /* Bikin Layout 2 Kolom */
+  grid-template-columns: 1.1fr 0.9fr; 
   gap: 3rem;
   align-items: center;
 }
@@ -99,7 +95,7 @@ h1 em { font-style: italic; }
 .hero-bio { font-size: 17px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 2.25rem; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-/* ===== POLAROID COLLAGE (NEW!) ===== */
+/* ===== POLAROID COLLAGE ===== */
 .hero-visuals {
   position: relative;
   height: 480px;
@@ -134,15 +130,12 @@ h1 em { font-style: italic; }
   width: 100%;
 }
 
-/* Posisi Kartu */
 .card-1 { transform: rotate(-7deg) translateX(-45px) translateY(-20px); z-index: 1; }
 .card-2 { transform: rotate(5deg) translateX(45px) translateY(30px); z-index: 2; }
-
-/* Hover Efek Kartu */
 .card-1:hover { transform: rotate(-4deg) translateX(-45px) translateY(-30px) scale(1.05); z-index: 3; }
 .card-2:hover { transform: rotate(2deg) translateX(45px) translateY(20px) scale(1.05); z-index: 4; }
 
-/* ===== DEKORASI TEKS & PANAH (NEW PADDING!) ===== */
+/* ===== DEKORASI TEKS & PANAH ===== */
 .hw-float {
   font-family: 'Kalam', cursive;
   font-size: 16px;
@@ -152,20 +145,16 @@ h1 em { font-style: italic; }
   z-index: 10;
   pointer-events: none;
 }
-
-/* KITA GEDEIN NEGATIVE OFFSET-NYA BIAR LARI LEBIH JAUH */
 .hw-top-left { 
-  top: -40px; /* Dari -10px ke -40px */
-  left: -90px; /* Dari -40px ke -90px */
-  transform: rotate(-10deg); /* Dikit tambah rotasi */
+  top: -40px; 
+  left: -90px; 
+  transform: rotate(-10deg); 
 }
-
 .hw-bottom-right { 
-  bottom: -30px; /* Dari 0px ke -30px */
-  right: -70px; /* Dari -20px ke -70px */
-  transform: rotate(6deg); /* Dikit tambah rotasi */
+  bottom: -30px; 
+  right: -70px; 
+  transform: rotate(6deg); 
 }
-
 .arrow-svg { position: absolute; color: #555; }
 .arrow-1 { bottom: -45px; right: 20px; }
 .arrow-2 { top: -45px; left: 50px; }
@@ -311,7 +300,6 @@ footer { border-top: 0.5px solid var(--border); padding: 3rem 0 2.5rem; }
   .hero { padding: 2.5rem 0 2.5rem; }
   .hero-bio { font-size: 15px; }
   
-  /* MOBILNYA KITA KECILIN DIKIT BIAR GAK TUMPENG */
   .hero-visuals { transform: scale(0.7); height: 350px; }
   .hw-top-left { left: 0px; top: -50px; }
   .hw-bottom-right { bottom: -30px; right: 0px; }
