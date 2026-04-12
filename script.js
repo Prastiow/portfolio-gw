@@ -1,6 +1,28 @@
 /* script.js */
 
 document.addEventListener('DOMContentLoaded', function() {
+
+  // --- MAGNETIC BUTTON LOGIC ---
+  const magneticElements = document.querySelectorAll('.magnetic');
+
+  magneticElements.forEach((elem) => {
+    elem.addEventListener('mousemove', (e) => {
+      const rect = elem.getBoundingClientRect();
+      
+      // Hitung posisi mouse relatif terhadap titik tengah elemen
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      
+      // x * 0.3 dan y * 0.3 itu kekuatan tarikannya. 
+      // Makin gede angkanya, makin jauh tombolnya ketarik.
+      elem.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+
+    elem.addEventListener('mouseleave', () => {
+      // Balikin ke posisi center (0,0) secara mulus pas mouse keluar
+      elem.style.transform = 'translate(0px, 0px)';
+    });
+  });
   
   // --- RAW MODE TOGGLE LOGIC ---
   const themeToggle = document.getElementById('themeToggle');
