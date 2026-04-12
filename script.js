@@ -76,13 +76,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const themeToggleMobile = document.getElementById('themeToggleMobile');
   const body = document.body;
 
-  const switchSound = new Audio('switch.mp3'); // Ganti file ini kalo perlu
+  const switchSound = new Audio('switch.mp3'); 
   switchSound.volume = 0.4; 
 
   function setRawMode(isRaw, playSound = true) {
     if (playSound) {
       switchSound.currentTime = 0;
-      switchSound.play().catch(err => console.log("Audio blocked by browser", err));
+      switchSound.play().catch(err => console.log("Audio blocked", err));
     }
 
     if (isRaw) {
@@ -138,19 +138,16 @@ document.addEventListener('DOMContentLoaded', function() {
     var scrollPos = window.scrollY;
     var triggerHeight = heroElement ? heroElement.offsetHeight : 300;
 
-    // Mobile CTA Show/Hide
     if (mobileCta) {
       if (scrollPos > triggerHeight) mobileCta.classList.add('visible');
       else mobileCta.classList.remove('visible');
     }
 
-    // Back to Top Show/Hide
     if (backToTop) {
       if (scrollPos > 500) backToTop.classList.add('visible');
       else backToTop.classList.remove('visible');
     }
 
-    // Scroll Progress Bar Update
     if (scrollProgressBar) {
       var totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
       var windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -177,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-// --- PROJECT DATA & OVERLAY LOGIC ---
+// --- PROJECT DATA ---
 var projects = [
   {
     tag: 'UI/UX Design',
@@ -224,7 +221,6 @@ var projects = [
 function openProject(idx) {
   var overlay = document.getElementById('projectOverlay');
   if (!overlay) return;
-  
   var p = projects[idx];
   document.getElementById('overlayTag').textContent = p.tag;
   document.getElementById('overlayTitle').innerHTML = p.title;
@@ -233,11 +229,8 @@ function openProject(idx) {
   document.getElementById('overlayYear').textContent = p.year;
   document.getElementById('overlayRole').textContent = p.role;
   document.getElementById('overlayTools').textContent = p.tools;
-  
   document.getElementById('overlayCover').innerHTML = '<img src="' + p.cover + '" alt="Project Cover">';
-  
   document.getElementById('overlayBody').innerHTML = p.body;
-  
   overlay.classList.add('active');
   overlay.scrollTop = 0;
   document.body.style.overflow = 'hidden';
