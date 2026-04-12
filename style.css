@@ -140,21 +140,33 @@ h1 em { font-style: italic; }
 
 /* Hover Efek Kartu */
 .card-1:hover { transform: rotate(-4deg) translateX(-45px) translateY(-30px) scale(1.05); z-index: 3; }
-.card-2:hover { transform: rotate(2deg) translateX(45px) translateY(20px) scale(1.05); }
+.card-2:hover { transform: rotate(2deg) translateX(45px) translateY(20px) scale(1.05); z-index: 4; }
 
-/* Dekorasi Teks & Panah */
+/* ===== DEKORASI TEKS & PANAH (NEW PADDING!) ===== */
 .hw-float {
   font-family: 'Kalam', cursive;
   font-size: 16px;
-  color: #555; /* Warna teks digelapin biar kelihatan */
+  color: #555;
   position: absolute;
   line-height: 1.3;
   z-index: 10;
   pointer-events: none;
 }
-.hw-top-left { top: -10px; left: -40px; transform: rotate(-5deg); }
-.hw-bottom-right { bottom: 0px; right: -20px; transform: rotate(3deg); }
-.arrow-svg { position: absolute; color: #555; } /* Warna panah disamain sama teks */
+
+/* KITA GEDEIN NEGATIVE OFFSET-NYA BIAR LARI LEBIH JAUH */
+.hw-top-left { 
+  top: -40px; /* Dari -10px ke -40px */
+  left: -90px; /* Dari -40px ke -90px */
+  transform: rotate(-10deg); /* Dikit tambah rotasi */
+}
+
+.hw-bottom-right { 
+  bottom: -30px; /* Dari 0px ke -30px */
+  right: -70px; /* Dari -20px ke -70px */
+  transform: rotate(6deg); /* Dikit tambah rotasi */
+}
+
+.arrow-svg { position: absolute; color: #555; }
 .arrow-1 { bottom: -45px; right: 20px; }
 .arrow-2 { top: -45px; left: 50px; }
 
@@ -298,8 +310,11 @@ footer { border-top: 0.5px solid var(--border); padding: 3rem 0 2.5rem; }
   
   .hero { padding: 2.5rem 0 2.5rem; }
   .hero-bio { font-size: 15px; }
-  .hero-visuals { transform: scale(0.75); height: 350px; }
-  .hw-top-left { left: 0px; top: -30px; }
+  
+  /* MOBILNYA KITA KECILIN DIKIT BIAR GAK TUMPENG */
+  .hero-visuals { transform: scale(0.7); height: 350px; }
+  .hw-top-left { left: 0px; top: -50px; }
+  .hw-bottom-right { bottom: -30px; right: 0px; }
   
   .about-hero { grid-template-columns: 1fr; padding: 2rem 0 2rem; gap: 2rem; }
   .about-hero h1 { font-size: 1.9rem; }
