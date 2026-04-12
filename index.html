@@ -3,10 +3,346 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tri Prastio Nugroho — Designer & Creative Technologist</title>
+  <title>Tri Prastio Nugroho | Designer & Creative Technologist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --bg: #f9f8f5;
+      --bg-card: #ffffff;
+      --text: #111110;
+      --text-secondary: #6b6b68;
+      --text-tertiary: #a0a09c;
+      --border: rgba(0,0,0,0.08);
+      --border-hover: rgba(0,0,0,0.18);
+      --nav-bg: rgba(249,248,245,0.88);
+      --green: #3caf70;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
+
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    .nav-inner {
+      max-width: 920px; margin: 0 auto;
+      padding: 0 2rem; height: 56px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 9px;
+      text-decoration: none; color: var(--text);
+    }
+    .nav-logo-name { font-size: 14px; font-weight: 500; letter-spacing: -0.01em; }
+    .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+.hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      gap: 5px; width: 32px; height: 32px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span { display: block; width: 100%; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.25s ease, opacity 0.2s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; flex-direction: column;
+      border-top: 0.5px solid var(--border); background: var(--nav-bg);
+      max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+    }
+    .mobile-menu.open { max-height: 220px; }
+    .mobile-menu a { font-size: 14px; color: var(--text-secondary); text-decoration: none; padding: 14px 1.25rem; border-bottom: 0.5px solid var(--border); transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--text); }
+
+    .container { max-width: 920px; margin: 0 auto; padding: 0 2rem; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero { padding: 7rem 0 6rem; animation: fadeUp 0.6s ease both; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-family: 'DM Mono', monospace;
+      color: var(--text-secondary); border: 0.5px solid var(--border);
+      border-radius: 99px; padding: 5px 14px; margin-bottom: 2rem;
+      background: var(--bg-card); transition: background-color 0.3s, border-color 0.3s;
+    }
+    .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0; position: relative;
+    }
+    .dot::before {
+      content: ''; position: absolute; inset: -4px; border-radius: 50%;
+      background: rgba(60,175,112,0.35); animation: pulse 1.8s ease-out infinite;
+    }
+    .dot::after {
+      content: ''; position: absolute; inset: -8px; border-radius: 50%;
+      background: rgba(60,175,112,0.15); animation: pulse 1.8s ease-out infinite 0.3s;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.6); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+    h1 { font-size: clamp(2.2rem, 5.5vw, 3.8rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+    h1 em { font-style: italic; }
+    .hero-bio { font-size: 17px; color: var(--text-secondary); line-height: 1.75; max-width: 560px; margin-bottom: 2.25rem; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn {
+      padding: 10px 24px; border-radius: var(--radius-md);
+      font-size: 14px; font-weight: 500; font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      border: 0.5px solid var(--border-hover); color: var(--text); background: var(--bg-card);
+      transition: all 0.2s;
+    }
+    .btn:hover { transform: translateY(-1px); background: var(--bg); }
+    .btn-primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .btn-primary:hover { opacity: 0.82; background: var(--text); }
+
+    hr { border: none; border-top: 0.5px solid var(--border); }
+    section { padding: 5rem 0; }
+    .section-label {
+      font-size: 11px; font-family: 'DM Mono', monospace;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-tertiary); margin-bottom: 2.5rem;
+    }
+
+    /* ============ PROJECTS — EDITORIAL LAYOUT (okoslam style) ============ */
+    .projects-list { display: flex; flex-direction: column; gap: 0; }
+
+    .project-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border-top: 0.5px solid var(--border);
+      text-decoration: none; color: inherit;
+      cursor: pointer; transition: background-color 0.2s;
+      min-height: 340px;
+    }
+    .project-row:last-child { border-bottom: 0.5px solid var(--border); }
+    .project-row:hover { background: var(--bg-card); }
+    .project-row:hover .project-row-arrow { transform: translate(3px, -3px); }
+
+    /* alternate image side */
+    .project-row.reverse { direction: rtl; }
+    .project-row.reverse > * { direction: ltr; }
+
+    .project-row-img {
+      width: 100%; height: 100%; min-height: 300px;
+      background: var(--bg-card); overflow: hidden;
+      border-right: 0.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text-tertiary);
+      transition: background-color 0.3s;
+    }
+    .project-row.reverse .project-row-img { border-right: none; border-left: 0.5px solid var(--border); }
+    .project-row-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .project-row-info {
+      padding: 2.5rem 2.5rem 2.5rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .project-row-top {}
+    .project-row-num {
+      font-size: 11px; font-family: 'DM Mono', monospace;
+      letter-spacing: 0.1em; color: var(--text-tertiary); margin-bottom: 1.5rem;
+    }
+    .project-row-tag {
+      font-size: 10px; font-family: 'DM Mono', monospace;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-tertiary); margin-bottom: 0.6rem;
+    }
+    .project-row-title {
+      font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 300;
+      letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .project-row-title em { font-style: italic; }
+    .project-row-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.65; max-width: 340px; }
+    .project-row-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; }
+    .project-row-year { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text-tertiary); }
+    .project-row-arrow {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 0.5px solid var(--border-hover); display: flex; align-items: center; justify-content: center;
+      color: var(--text-secondary); transition: transform 0.2s, border-color 0.2s;
+    }
+
+    /* PROJECT DETAIL OVERLAY */
+    .project-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: var(--bg); overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .project-overlay.active { opacity: 1; pointer-events: all; }
+    .overlay-nav {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--nav-bg); backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2rem; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 100%;
+    }
+    .overlay-close {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-family: 'DM Mono', monospace;
+      color: var(--text-secondary); cursor: pointer;
+      background: none; border: none; padding: 0; transition: color 0.2s;
+    }
+    .overlay-close:hover { color: var(--text); }
+    .overlay-title-nav { font-size: 13px; font-weight: 500; letter-spacing: -0.01em; }
+
+    .overlay-content { max-width: 920px; margin: 0 auto; padding: 0 2rem 6rem; }
+    .overlay-hero { padding: 4rem 0 3rem; }
+    .overlay-tag { font-size: 10px; font-family: 'DM Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 1rem; }
+    .overlay-h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.25rem; }
+    .overlay-h1 em { font-style: italic; }
+    .overlay-sub { font-size: 16px; color: var(--text-secondary); line-height: 1.7; max-width: 560px; }
+    .overlay-meta { display: flex; gap: 3rem; margin-top: 2.5rem; flex-wrap: wrap; }
+    .overlay-meta-item label { display: block; font-size: 10px; font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px; }
+    .overlay-meta-item span { font-size: 14px; color: var(--text-secondary); }
+    .overlay-cover {
+      width: 100%; aspect-ratio: 16/9; background: var(--bg-card);
+      border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 4rem;
+      border: 0.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text-tertiary);
+    }
+    .overlay-cover img { width: 100%; height: 100%; object-fit: cover; }
+    .overlay-body { font-size: 16px; color: var(--text-secondary); line-height: 1.8; max-width: 660px; }
+    .overlay-body p { margin-bottom: 1.5rem; }
+    .overlay-body h2 { font-size: 20px; font-weight: 400; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1rem; margin-top: 2.5rem; }
+
+    /* ============ OTHER WORKS GRID ============ */
+    .other-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .other-card {
+      background: var(--bg-card); border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s, background-color 0.3s;
+    }
+    .other-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+    .other-thumb {
+      width: 100%; aspect-ratio: 16/9; background: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-family: 'DM Mono', monospace; color: var(--text-tertiary);
+      overflow: hidden; transition: background-color 0.3s;
+    }
+    .other-info { padding: 0.9rem 1rem 1.1rem; }
+    .other-title { font-size: 13px; font-weight: 500; margin-bottom: 4px; letter-spacing: -0.01em; }
+    .other-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.55; }
+
+    .show-more-wrap { margin-top: 1.5rem; display: flex; justify-content: center; }
+    .btn-show-more {
+      padding: 9px 22px; border-radius: var(--radius-md);
+      font-size: 13px; font-weight: 500; font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: pointer; border: 0.5px solid var(--border-hover);
+      color: var(--text-secondary); background: transparent;
+      display: flex; align-items: center; gap: 6px; transition: all 0.2s; text-decoration: none;
+    }
+    .btn-show-more:hover { color: var(--text); background: var(--bg-card); }
+
+    /* ============ TOOLS — LOGO PILLS ============ */
+    .tools-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tool-pill {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 99px;
+      border: 0.5px solid var(--border); background: var(--bg-card);
+      font-size: 13px; color: var(--text-secondary);
+      transition: border-color 0.2s, color 0.2s, background-color 0.3s;
+    }
+    .tool-pill:hover { border-color: var(--border-hover); color: var(--text); }
+    .tool-pill svg, .tool-pill img { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ============ FAQ ============ */
+    .faq-section { padding: 5rem 0; }
+    .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
+    .faq-heading {
+      font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300;
+      letter-spacing: -0.03em; line-height: 1.15; position: sticky; top: 80px;
+    }
+    .faq-heading em { font-style: italic; }
+    .faq-list { display: flex; flex-direction: column; }
+    .faq-item {
+      border-top: 0.5px solid var(--border);
+      cursor: pointer; transition: background-color 0.2s;
+    }
+    .faq-item:last-child { border-bottom: 0.5px solid var(--border); }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 0; gap: 1rem;
+    }
+    .faq-question-text { font-size: 15px; color: var(--text-secondary); transition: color 0.2s; line-height: 1.4; }
+    .faq-item:hover .faq-question-text { color: var(--text); }
+    .faq-arrow {
+      width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%;
+      border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center;
+      color: var(--text-tertiary); transition: transform 0.3s ease, border-color 0.2s, color 0.2s;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); border-color: var(--border-hover); color: var(--text); }
+    .faq-answer {
+      font-size: 14px; color: var(--text-secondary); line-height: 1.75;
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.25s ease;
+      padding-bottom: 0;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.4rem; }
+
+    @media (max-width: 680px) {
+      .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .faq-heading { position: static; }
+    }
+
+    /* FOOTER */
+    footer { border-top: 0.5px solid var(--border); padding: 3rem 0 2.5rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
+    .footer-cta { font-size: 20px; font-weight: 300; letter-spacing: -0.02em; max-width: 300px; line-height: 1.3; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+    .footer-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; font-family: 'DM Mono', monospace; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 12px; color: var(--text-tertiary); font-family: 'DM Mono', monospace; }
+
+    @media (max-width: 680px) {
+      .nav-inner { padding: 0 1.25rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .container { padding: 0 1.25rem; }
+      .hero { padding: 3.5rem 0 3rem; }
+      .hero-bio { font-size: 15px; }
+      .project-row { grid-template-columns: 1fr; min-height: auto; }
+      .project-row.reverse { direction: ltr; }
+      .project-row-img { min-height: 200px; border-right: none !important; border-left: none !important; border-bottom: 0.5px solid var(--border); }
+      .project-row-info { padding: 1.5rem 1.25rem; }
+      .project-row-title { font-size: 1.3rem; }
+      .overlay-nav { padding: 0 1.25rem; }
+      .overlay-content { padding: 0 1.25rem 4rem; }
+      .overlay-meta { gap: 1.25rem; flex-wrap: wrap; }
+      .overlay-h1 { font-size: 1.8rem; }
+      .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
+      .faq-heading { position: static; font-size: 1.8rem; }
+      .tools-wrap { gap: 8px; }
+      .tool-pill { font-size: 12px; padding: 7px 12px; }
+      .show-more-wrap { margin-top: 1.25rem; }
+      .footer-links { align-items: flex-start; }
+      .footer-inner { flex-direction: column; }
+      section { padding: 3.5rem 0; }
+    }
+  </style>
 </head>
 <body>
 
@@ -17,10 +353,9 @@
     </a>
     <div class="nav-right">
       <div class="nav-links">
-        <a href="index.html" class="magnetic">Home</a>
-        <a href="about.html" class="magnetic">About</a>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
       </div>
-      <a href="https://drive.google.com/uc?export=download&id=1M-jESXvJuOaxmCx4xc4DV-IjsMb2XRLn" class="mobile-cta" id="mobileCta" target="_blank">CV</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -40,11 +375,11 @@
     </div>
     <h1>Designer &amp; <em>Creative</em><br>Technologist</h1>
     <p class="hero-bio">
-      Hi! I bring creativity, playfulness, and experience to solve problems and create compelling visual narratives — from interaction design to real-time generative visuals.
+      Hi! I bring creativity, playfulness, and experience to solve problems and create compelling visual narratives, from interaction design to real time generative visuals.
     </p>
     <div class="hero-actions">
-      <a href="https://drive.google.com/uc?export=download&id=1M-jESXvJuOaxmCx4xc4DV-IjsMb2XRLn" class="btn btn-primary magnetic" target="_blank">Download CV</a>
-      <a href="about.html" class="btn magnetic">About Me</a>
+      <a href="https://drive.google.com/uc?export=download&id=1M-jESXvJuOaxmCx4xc4DV-IjsMb2XRLn" class="btn btn-primary" target="_blank">Download CV</a>
+      <a href="about.html" class="btn">About Me</a>
     </div>
   </div>
 </div>
@@ -137,6 +472,14 @@
       </div>
 
     </div>
+    <div class="show-more-wrap" style="margin-top:2rem;">
+      <button class="btn-show-more" onclick="">
+        See all projects
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 2.5L9.5 7L5 11.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
   </section>
 </div>
 
@@ -173,38 +516,75 @@
   <section>
     <div class="section-label">Tools &amp; expertise</div>
     <div class="tools-wrap">
+
       <span class="tool-pill">
-        <svg viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 28.5C19 25.981 20.0009 23.5641 21.7825 21.7825C23.5641 20.0009 25.981 19 28.5 19C31.019 19 33.4359 20.0009 35.2175 21.7825C36.9991 23.5641 38 25.981 38 28.5C38 31.019 36.9991 33.4359 35.2175 35.2175C33.4359 36.9991 31.019 38 28.5 38C25.981 38 23.5641 36.9991 21.7825 35.2175C20.0009 33.4359 19 31.019 19 28.5Z" fill="#1ABCFE"/><path d="M0 47.5C0 44.981 1.00089 42.5641 2.78249 40.7825C4.56408 39.0009 6.98098 38 9.5 38H19V47.5C19 50.019 17.9991 52.4359 16.2175 54.2175C14.4359 55.9991 12.019 57 9.5 57C6.981 57 4.56408 55.9991 2.78249 54.2175C1.00089 52.4359 0 50.019 0 47.5Z" fill="#0ACF83"/><path d="M19 0V19H28.5C31.019 19 33.4359 17.9991 35.2175 16.2175C36.9991 14.4359 38 12.019 38 9.5C38 6.981 36.9991 4.56408 35.2175 2.78249C33.4359 1.00089 31.019 0 28.5 0H19Z" fill="#FF7262"/><path d="M0 9.5C0 12.019 1.00089 14.4359 2.78249 16.2175C4.56408 17.9991 6.98098 19 9.5 19H19V0H9.5C6.981 0 4.56408 1.00089 2.78249 2.78249C1.00089 4.56408 0 6.981 0 9.5Z" fill="#F24E1E"/><path d="M0 28.5C0 31.019 1.00089 33.4359 2.78249 35.2175C4.56408 36.9991 6.98098 38 9.5 38H19V19H9.5C6.981 19 4.56408 20.0009 2.78249 21.7825C1.00089 23.5641 0 25.981 0 28.5Z" fill="#A259FF"/></svg>
+        <svg viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 28.5C19 25.981 20.0009 23.5641 21.7825 21.7825C23.5641 20.0009 25.981 19 28.5 19C31.019 19 33.4359 20.0009 35.2175 21.7825C36.9991 23.5641 38 25.981 38 28.5C38 31.019 36.9991 33.4359 35.2175 35.2175C33.4359 36.9991 31.019 38 28.5 38C25.981 38 23.5641 36.9991 21.7825 35.2175C20.0009 33.4359 19 31.019 19 28.5Z" fill="#1ABCFE"/>
+          <path d="M0 47.5C0 44.981 1.00089 42.5641 2.78249 40.7825C4.56408 39.0009 6.98098 38 9.5 38H19V47.5C19 50.019 17.9991 52.4359 16.2175 54.2175C14.4359 55.9991 12.019 57 9.5 57C6.981 57 4.56408 55.9991 2.78249 54.2175C1.00089 52.4359 0 50.019 0 47.5Z" fill="#0ACF83"/>
+          <path d="M19 0V19H28.5C31.019 19 33.4359 17.9991 35.2175 16.2175C36.9991 14.4359 38 12.019 38 9.5C38 6.981 36.9991 4.56408 35.2175 2.78249C33.4359 1.00089 31.019 0 28.5 0H19Z" fill="#FF7262"/>
+          <path d="M0 9.5C0 12.019 1.00089 14.4359 2.78249 16.2175C4.56408 17.9991 6.98098 19 9.5 19H19V0H9.5C6.981 0 4.56408 1.00089 2.78249 2.78249C1.00089 4.56408 0 6.981 0 9.5Z" fill="#F24E1E"/>
+          <path d="M0 28.5C0 31.019 1.00089 33.4359 2.78249 35.2175C4.56408 36.9991 6.98098 38 9.5 38H19V19H9.5C6.981 19 4.56408 20.0009 2.78249 21.7825C1.00089 23.5641 0 25.981 0 28.5Z" fill="#A259FF"/>
+        </svg>
         Figma
       </span>
+
       <span class="tool-pill">
-        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" rx="3" fill="#3B3B3B"/><circle cx="8" cy="8" r="4.5" stroke="#57C8D3" stroke-width="1.5"/><circle cx="8" cy="8" r="1.5" fill="#57C8D3"/></svg>
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="16" height="16" rx="3" fill="#3B3B3B"/>
+          <circle cx="8" cy="8" r="4.5" stroke="#57C8D3" stroke-width="1.5"/>
+          <circle cx="8" cy="8" r="1.5" fill="#57C8D3"/>
+        </svg>
         TouchDesigner
       </span>
+
       <span class="tool-pill">
-        <svg viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H14V7H7L14 14H7V21L0 14V7H7L0 0Z" fill="currentColor"/></svg>
+        <svg viewBox="0 0 14 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0H14V7H7L14 14H7V21L0 14V7H7L0 0Z" fill="currentColor"/>
+        </svg>
         Framer
       </span>
+
       <span class="tool-pill">
-        <svg viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.707 0C19.193 4.744 17.078 8.155 14.37 10.23V0h-4.37v18l4.37-4.37c-.002 0 4.37-8.496 4.37-8.496L20.707 18H28L20.707 0zM0 0L5.585 13.537 8.37 0H0z" fill="#4353FF"/></svg>
+        <svg viewBox="0 0 28 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.707 0C19.193 4.744 17.078 8.155 14.37 10.23V0h-4.37v18l4.37-4.37c-.002 0 4.37-8.496 4.37-8.496L20.707 18H28L20.707 0zM0 0L5.585 13.537 8.37 0H0z" fill="#4353FF"/>
+        </svg>
         Webflow
       </span>
+
       <span class="tool-pill">
-        <svg viewBox="0 0 38 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.615 0L38 26H7.23L22.615 0Z" fill="#EB1000"/><path d="M15.385 0L0 26h14.77L22.615 0z" fill="#EB1000" opacity="0.6"/></svg>
+        <svg viewBox="0 0 38 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.615 0L38 26H7.23L22.615 0Z" fill="#EB1000"/>
+          <path d="M15.385 0L0 26h14.77L22.615 0z" fill="#EB1000" opacity="0.6"/>
+        </svg>
         Adobe CC
       </span>
+
       <span class="tool-pill">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="#FF4D4D"/><path d="M10 9h7.5c2.485 0 4.5 2.015 4.5 4.5S19.985 18 17.5 18H14v5h-4V9zm4 6h3a2 2 0 000-4h-3v4z" fill="white"/><circle cx="19.5" cy="20.5" r="2.5" fill="white"/></svg>
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#FF4D4D"/>
+          <path d="M10 9h7.5c2.485 0 4.5 2.015 4.5 4.5S19.985 18 17.5 18H14v5h-4V9zm4 6h3a2 2 0 000-4h-3v4z" fill="white"/>
+          <circle cx="19.5" cy="20.5" r="2.5" fill="white"/>
+        </svg>
         Rive Animation
       </span>
+
       <span class="tool-pill">
-        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 2C5 1.448 5.448 1 6 1s1 .448 1 1v5.586l1.293-1.293a1 1 0 011.414 1.414L7 10.414A2 2 0 016 11H5a2 2 0 01-2-2V4a1 1 0 012 0V2z" fill="currentColor"/><path d="M9 6a1 1 0 012 0v3h1a1 1 0 110 2h-1a2 2 0 01-2-2V6z" fill="currentColor" opacity=".6"/></svg>
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 2C5 1.448 5.448 1 6 1s1 .448 1 1v5.586l1.293-1.293a1 1 0 011.414 1.414L7 10.414A2 2 0 016 11H5a2 2 0 01-2-2V4a1 1 0 012 0V2z" fill="currentColor"/>
+          <path d="M9 6a1 1 0 012 0v3h1a1 1 0 110 2h-1a2 2 0 01-2-2V6z" fill="currentColor" opacity=".6"/>
+        </svg>
         Interaction Design
       </span>
+
       <span class="tool-pill">
-        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="2" fill="currentColor"/><path d="M8 2a6 6 0 100 12A6 6 0 008 2z" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 2"/><path d="M8 5v3l2 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="2" fill="currentColor"/>
+          <path d="M8 2a6 6 0 100 12A6 6 0 008 2z" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 2"/>
+          <path d="M8 5v3l2 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
         Motion Design
       </span>
+
     </div>
   </section>
 </div>
@@ -226,7 +606,7 @@
               </svg>
             </div>
           </div>
-          <div class="faq-answer">I specialize in interaction design, UI/UX, motion design, and creative technology — from crafting polished product interfaces to building real-time generative visuals with tools like TouchDesigner and Rive. I enjoy working at the intersection of design and code.</div>
+          <div class="faq-answer">I specialize in interaction design, UI/UX, motion design, and creative technology, from crafting polished product interfaces to building real time generative visuals with tools like TouchDesigner and Rive. I enjoy working at the intersection of design and code.</div>
         </div>
 
         <div class="faq-item" onclick="toggleFaq(this)">
@@ -238,7 +618,7 @@
               </svg>
             </div>
           </div>
-          <div class="faq-answer">I typically start with discovery and understanding the problem space, move into ideation and rapid prototyping, then refine through iterations based on feedback. I believe great design is a conversation, not a handoff — so I keep clients involved throughout the process.</div>
+          <div class="faq-answer">I typically start with discovery and understanding the problem space, move into ideation and rapid prototyping, then refine through iterations based on feedback. I believe great design is a conversation, not a handoff, so I keep clients involved throughout the process.</div>
         </div>
 
         <div class="faq-item" onclick="toggleFaq(this)">
@@ -250,7 +630,55 @@
               </svg>
             </div>
           </div>
-          <div class="faq-answer">Project timelines vary depending on scope — a simple landing page might take 1–2 weeks, while a full product design can take 4–8 weeks or more.</div>
+          <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Project timelines vary depending on scope. A simple landing page might take 1 to 2 weeks, while a full product design can take 4 to 8 weeks or more.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span class="faq-question-text">Who will be involved in working on the designs?</span>
+            <div class="faq-arrow">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">All work is done directly by me, you'll always be working with Tio, not passed off to a junior or a team you never met. This ensures quality, consistency, and a direct line of communication throughout the project.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span class="faq-question-text">What if I'm not happy with the result or creative direction?</span>
+            <div class="faq-arrow">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">Revisions are a natural part of the process. I include revision rounds in every project and always align on direction early to minimize surprises. If something isn't working, we talk it through and find a solution together, no drama, just good design.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span class="faq-question-text">Do you also handle development or just design?</span>
+            <div class="faq-arrow">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. I'm comfortable working in Framer and Webflow to bring designs to life without a developer, and I can collaborate closely with dev teams when needed. I bridge the gap between design intent and implementation.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span class="faq-question-text">Are you available for freelance or full time opportunities?</span>
+            <div class="faq-arrow">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="faq-answer">Yes, I'm currently open to both freelance projects and full time roles. If you have something interesting in mind, feel free to reach out via email or LinkedIn and let's have a conversation.</div>
         </div>
 
       </div>
@@ -265,22 +693,93 @@
     <div class="footer-inner">
       <div class="footer-cta">Let's work together to craft something extraordinary.</div>
       <div class="footer-links">
-        <a href="https://www.instagram.com/prsteow/?hl=en" target="_blank">Instagram ↗</a>
-        <a href="https://www.linkedin.com/in/triprastion/" target="_blank">LinkedIn ↗</a>
-        <a href="mailto:contact@example.com">Email ↗</a>
+        <a href="https://instagram.com/" target="_blank">Instagram ↗</a>
+        <a href="https://linkedin.com/" target="_blank">LinkedIn ↗</a>
+        <a href="/cdn-cgi/l/email-protection#740406150700111b03341319151d185a171b19">Email ↗</a>
       </div>
     </div>
-    <div class="footer-copy">© 2026 — Tri Prastio Nugroho</div>
+    <div class="footer-copy">© 2026 Tri Prastio Nugroho</div>
   </footer>
 </div>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 19V5M5 12l7-7 7 7"/>
-  </svg>
-</button>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  var hamburger = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
 
-<script src="script.js"></script>
+  var projects = [
+    {
+      tag: 'UI/UX Design',
+      title: 'Kompas <em>NFT</em>',
+      sub: 'Case study for the Kompas NFT project, focusing on UI/UX design, competitor analysis, and seamless integration for Kompas Daily.',
+      year: '2022',
+      role: 'Sole UI/UX Designer',
+      tools: 'Figma',
+      cover: 'thumbnail_1.jpg',
+      body: '<h2>Overview</h2><p>Designed the end to end UI/UX for the Kompas NFT project within the Product and Development division at Kompas Daily.</p><h2>Process</h2><p>Conducted extensive competitor analysis, established the core design system, and collaborated seamlessly with the engineering team to ensure high fidelity implementation.</p><h2>Outcome</h2><p>Successfully launched the platform, delivering a smooth and intuitive experience for users navigating the NFT ecosystem.</p>'
+    },
+    {
+      tag: 'Website Design',
+      title: 'Nama Project <em>Kedua</em>',
+      sub: 'A detailed overview of this website design project, the strategy, visual language, and execution that brought it to life.',
+      year: '2025',
+      role: 'UI/UX Designer',
+      tools: 'Figma, Webflow',
+      cover: 'thumbnail_2.jpg',
+      body: '<h2>Overview</h2><p>Describe the project context and goals here.</p><h2>Process</h2><p>Walk through your design process.</p><h2>Outcome</h2><p>What was the final result?</p>'
+    },
+    {
+      tag: 'Motion Design',
+      title: 'Nama Project <em>Ketiga</em>',
+      sub: 'A motion design project exploring dynamic storytelling through animation and visual rhythm.',
+      year: '2024',
+      role: 'Motion Designer',
+      tools: 'After Effects, Rive',
+      cover: 'thumbnail_3.jpg',
+      body: '<h2>Overview</h2><p>Describe the project context and goals here.</p><h2>Process</h2><p>Walk through your design process.</p><h2>Outcome</h2><p>What was the final result?</p>'
+    },
+    {
+      tag: 'Mobile Design',
+      title: 'Nama Project <em>Keempat</em>',
+      sub: 'A mobile app design project focused on delightful micro interactions and seamless user flows.',
+      year: '2024',
+      role: 'Product Designer',
+      tools: 'Figma, Principle',
+      cover: 'thumbnail_4.jpg',
+      body: '<h2>Overview</h2><p>Describe the project context and goals here.</p><h2>Process</h2><p>Walk through your design process.</p><h2>Outcome</h2><p>What was the final result?</p>'
+    }
+  ];
 
+  function openProject(idx) {
+    var p = projects[idx];
+    var overlay = document.getElementById('projectOverlay');
+    document.getElementById('overlayTag').textContent = p.tag;
+    document.getElementById('overlayTitle').innerHTML = p.title;
+    document.getElementById('overlayTitleNav').innerHTML = p.title;
+    document.getElementById('overlaySub').textContent = p.sub;
+    document.getElementById('overlayYear').textContent = p.year;
+    document.getElementById('overlayRole').textContent = p.role;
+    document.getElementById('overlayTools').textContent = p.tools;
+    document.getElementById('overlayCover').textContent = p.cover;
+    document.getElementById('overlayBody').innerHTML = p.body;
+    overlay.classList.add('active');
+    overlay.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  }
+
+  function toggleFaq(item) {
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function closeProject() {
+    document.getElementById('projectOverlay').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+</script>
 </body>
 </html>
