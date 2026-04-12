@@ -318,7 +318,17 @@ h1 em { font-style: italic; }
 .project-row-info { padding: 2.5rem 2.5rem 2.5rem; display: flex; flex-direction: column; justify-content: space-between; }
 .project-row-num { font-size: 11px; font-family: 'DM Mono', monospace; letter-spacing: 0.1em; color: var(--text-tertiary); margin-bottom: 1.5rem; }
 .project-row-tag { font-size: 10px; font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.6rem; }
-.project-row-title { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem; }
+.project-row-title { 
+  font-size: clamp(1.4rem, 3vw, 2rem); 
+  font-weight: 300; 
+  letter-spacing: -0.03em; 
+  line-height: 1.15; 
+  margin-bottom: 1rem; 
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .project-row-title em { font-style: italic; }
 .project-row-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.65; max-width: 340px; }
 .project-row-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 2rem; }
@@ -342,11 +352,9 @@ h1 em { font-style: italic; }
 .overlay-meta-item label { display: block; font-size: 10px; font-family: 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 4px; }
 .overlay-meta-item span { font-size: 14px; color: var(--text-secondary); }
 
-/* UPDATE: position: relative biar tombol mute bisa nempel pas di pojok */
 .overlay-cover { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 4rem; border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text-tertiary); transition: background-color 0.3s, border-color 0.3s; }
 .overlay-cover img, .overlay-cover video { width: 100%; height: 100%; object-fit: cover; transition: filter 0.3s; }
 
-/* UPDATE: Styling untuk tombol Mute/Unmute di overlay video */
 .video-mute-btn {
   position: absolute;
   bottom: 20px;

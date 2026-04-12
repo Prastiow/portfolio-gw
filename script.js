@@ -221,13 +221,13 @@ var projects = [
   },
   {
     tag: 'Visual Art',
-    title: 'Generative <em>Forms</em>',
-    sub: 'An exploratory visual art project focusing on real-time generative patterns and motion.',
+    title: 'Real Time Audio Visualizer & <em>Blob Tracking System</em>',
+    sub: 'An interactive audio visual experiment that responds to motion and sound in real-time.',
     year: '2024',
     role: 'Creative Technologist',
     tools: 'TouchDesigner',
     cover: 'thumbnail_3.mp4',
-    body: '<h2>Context</h2><p>Describe the conceptual background of this generative piece.</p><h2>The Fix</h2><p>Detail the node-based logic and real-time parameters used to achieve the visual effect.</p><h2>Impact</h2><p>Where was it showcased or how did it push your technical boundaries?</p>'
+    body: '<h2>Context</h2><p>I wanted to explore the relationship between physical movement and digital soundscapes. The goal was to build a system where the <strong>Real Time Audio Visualizer & Blob Tracking System</strong> acts as a digital mirror to human interaction.</p><h2>The Fix</h2><p>I built a custom setup using TouchDesigner that processes two live inputs simultaneously:</p><ul><li><strong>Optical Blob Tracking:</strong> Taking live camera feeds to map out human silhouettes and motion data.</li><li><strong>Audio Reactivity:</strong> Analyzing sound frequencies to distort and drive the 3D geometries and particle behaviors in real-time.</li></ul><h2>Impact</h2><p>The result is a highly immersive, tactile experience that bridges the physical and digital worlds. It proves how complex node-based systems can translate into organic, fluid visual art.</p>'
   },
   {
     tag: 'UI/UX Design',
@@ -253,14 +253,12 @@ function openProject(idx) {
   document.getElementById('overlayRole').textContent = p.role;
   document.getElementById('overlayTools').textContent = p.tools;
   
-  // UPDATE: Tambahin tombol mute buat cover berbentuk video
   var coverElement = document.getElementById('overlayCover');
   if (p.cover.endsWith('.mp4') || p.cover.endsWith('.webm')) {
     coverElement.innerHTML = 
       '<video id="overlayVideo" src="' + p.cover + '" autoplay loop muted playsinline></video>' +
       '<button id="muteToggleBtn" class="video-mute-btn">Unmute</button>';
       
-    // Pasang Event Listener buat nge-toggle mute/unmute
     var videoEl = document.getElementById('overlayVideo');
     var muteBtn = document.getElementById('muteToggleBtn');
     
@@ -289,7 +287,6 @@ function closeProject() {
     overlay.classList.remove('active');
     document.body.style.overflow = 'auto';
     
-    // (Opsional) Berhenti nge-play video pas overlay ditutup biar gak beratin memory
     var videoEl = document.getElementById('overlayVideo');
     if (videoEl) {
       videoEl.pause();
