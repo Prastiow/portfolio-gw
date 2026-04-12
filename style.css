@@ -21,6 +21,18 @@ body {
   display: none !important;
 }
 
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--text); 
+  z-index: 999999; 
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
 /* ===== GENERATIVE PRELOADER ===== */
 .preloader {
   position: fixed;

@@ -5,15 +5,13 @@
   const preloader = document.getElementById('generative-preloader');
   if (!preloader) return;
 
-  // 1. Cek apakah di session ini sudah pernah muncul preloader
   if (sessionStorage.getItem('visitedBefore')) {
-    preloader.style.display = 'none'; // Langsung hilangkan tanpa animasi
-    document.body.style.overflow = 'auto'; // Pastikan bisa scroll
+    preloader.style.display = 'none'; 
+    document.body.style.overflow = 'auto'; 
     return;
   }
 
-  // 2. Jika baru pertama kali buka (dalam session ini), jalankan animasi
-  document.body.style.overflow = 'hidden'; // Kunci scroll
+  document.body.style.overflow = 'hidden'; 
 
   const preloaderText = document.getElementById('preloader-text');
   const preloaderBar = document.getElementById('preloader-bar');
@@ -23,7 +21,6 @@
   let progress = 0;
   let textIterations = 0;
 
-  // Animasi Glitch Text
   const textInterval = setInterval(() => {
     preloaderText.innerText = finalString.split("").map((char, index) => {
       if (index < textIterations) return finalString[index];
@@ -34,7 +31,6 @@
     textIterations += 1 / 2;
   }, 40);
 
-  // Fake Loading Progress
   const progressInterval = setInterval(() => {
     progress += Math.random() * 15; 
     if (progress > 100) progress = 100;
@@ -49,7 +45,6 @@
         setTimeout(() => {
            preloader.classList.add('hidden');
            document.body.style.overflow = 'auto';
-           // 3. SET TANDA: Sudah pernah load di session ini
            sessionStorage.setItem('visitedBefore', 'true');
         }, 400);
       }, 300);
@@ -81,11 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const themeToggleMobile = document.getElementById('themeToggleMobile');
   const body = document.body;
 
-  // Inisialisasi Audio (Pastikan file switch.mp3 ada di folder lu)
-  const switchSound = new Audio('switch.mp3');
-  switchSound.volume = 0.4; // Volume diset subtle (40%)
+  const switchSound = new Audio('switch.mp3'); // Ganti file ini kalo perlu
+  switchSound.volume = 0.4; 
 
-  // Tambahin parameter playSound biar gak auto-play pas awal load page
   function setRawMode(isRaw, playSound = true) {
     if (playSound) {
       switchSound.currentTime = 0;
@@ -105,12 +98,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Cek apakah user sebelumnya udah milih raw mode
   if (localStorage.getItem('theme') === 'raw') {
-    setRawMode(true, false); // playSound diset false biar pas refresh gak tiba-tiba bunyi
+    setRawMode(true, false); 
   }
 
-  // Event listener desktop
   if (themeToggle) {
     themeToggle.addEventListener('click', function() {
       const isCurrentlyRaw = body.classList.contains('raw-mode');
@@ -118,7 +109,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Event listener mobile menu
   if (themeToggleMobile) {
     themeToggleMobile.addEventListener('click', function(e) {
       e.preventDefault();
@@ -138,23 +128,34 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // --- SCROLL ACTIONS ---
+  // --- SCROLL ACTIONS & PROGRESS BAR ---
   var mobileCta = document.getElementById('mobileCta');
   var backToTop = document.getElementById('backToTop');
   var heroElement = document.querySelector('.hero') || document.querySelector('.about-hero');
+  var scrollProgressBar = document.getElementById('scrollProgressBar'); 
 
   window.addEventListener('scroll', function() {
     var scrollPos = window.scrollY;
     var triggerHeight = heroElement ? heroElement.offsetHeight : 300;
 
+    // Mobile CTA Show/Hide
     if (mobileCta) {
       if (scrollPos > triggerHeight) mobileCta.classList.add('visible');
       else mobileCta.classList.remove('visible');
     }
 
+    // Back to Top Show/Hide
     if (backToTop) {
       if (scrollPos > 500) backToTop.classList.add('visible');
       else backToTop.classList.remove('visible');
+    }
+
+    // Scroll Progress Bar Update
+    if (scrollProgressBar) {
+      var totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      var windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrollPercent = (totalScroll / windowHeight) * 100;
+      scrollProgressBar.style.width = scrollPercent + '%';
     }
   });
 
