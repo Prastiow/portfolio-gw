@@ -51,6 +51,22 @@
       <div class="nav-links">
         <a href="index.html" class="magnetic active">Home</a>
         <a href="about.html" class="magnetic">About</a>
+        <div class="nav-dropdown">
+          <button class="nav-dropdown-trigger magnetic">
+            Assets
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="https://gumroad.com" target="_blank">
+              <span class="dd-icon dd-icon-gumroad">G</span>
+              Gumroad
+            </a>
+            <a href="https://lemonsqueezy.com" target="_blank">
+              <span class="dd-icon dd-icon-lemon">🍋</span>
+              Lemon Squeezy
+            </a>
+          </div>
+        </div>
       </div>
       <button id="themeToggle" class="btn magnetic theme-toggle-btn">Raw Mode</button>
       <a href="https://drive.google.com/uc?export=download&id=1hGrVFO_qDe0kicB7vvzRSfa76KJ-wdGf" class="mobile-cta" id="mobileCta" target="_blank">Download CV</a>
@@ -62,6 +78,16 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
+    <div class="mobile-menu-dropdown">
+      <div class="mobile-menu-label" id="mobileAssetsToggle">
+        Assets
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div id="mobileAssetsMenu" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease;">
+        <a href="https://gumroad.com" target="_blank">Gumroad ↗</a>
+        <a href="https://lemonsqueezy.com" target="_blank">Lemon Squeezy ↗</a>
+      </div>
+    </div>
     <a href="#" id="themeToggleMobile">Toggle Raw Mode</a>
   </div>
 </nav>
@@ -353,7 +379,7 @@
       <div class="footer-links">
         <a href="https://www.instagram.com/prsteow/?hl=en" target="_blank">Instagram ↗</a>
         <a href="https://www.linkedin.com/in/triprastion/" target="_blank">LinkedIn ↗</a>
-        <a href="mailto:contact@example.com">Email ↗</a>
+        <a href="/cdn-cgi/l/email-protection#5d3e3233293c3e291d38253c302d3138733e3230">Email ↗</a>
       </div>
     </div>
     <div class="footer-copy">© 2026 — Tri Prastio Nugroho</div>
@@ -366,7 +392,4 @@
   </svg>
 </button>
 
-<script src="script.js"></script>
-
-</body>
-</html>
+<script

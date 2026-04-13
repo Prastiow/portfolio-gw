@@ -128,6 +128,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // --- MOBILE ASSETS DROPDOWN ---
+  var mobileAssetsToggle = document.getElementById('mobileAssetsToggle');
+  var mobileAssetsMenu = document.getElementById('mobileAssetsMenu');
+
+  if (mobileAssetsToggle && mobileAssetsMenu) {
+    mobileAssetsToggle.addEventListener('click', function() {
+      var isOpen = mobileAssetsToggle.classList.toggle('open');
+      mobileAssetsMenu.style.maxHeight = isOpen ? mobileAssetsMenu.scrollHeight + 'px' : '0';
+    });
+  }
+
   // --- PROJECT FILTER LOGIC ---
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectRows = document.querySelectorAll('.project-row');
