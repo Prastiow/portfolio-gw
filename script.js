@@ -201,13 +201,13 @@ document.addEventListener('DOMContentLoaded', function() {
 var projects = [
   {
     tag: 'UI/UX Design',
-    title: 'Kompas <em>NFT</em>',
-    sub: 'Case study for the Kompas NFT project, focusing on UI/UX design, competitor analysis, and seamless integration for Kompas Daily.',
-    year: '2022',
-    role: 'Sole UI/UX Designer',
+    title: 'Journey of <em>Immigrants</em>',
+    sub: 'An immersive interactive storytelling experience for Kompas ID, chronicling the lives of a detained immigrant family under UNHCR.',
+    year: '2023',
+    role: 'UI/UX Designer',
     tools: 'Figma',
     cover: 'thumbnail_1.jpg',
-    body: '<h2>Context</h2><p>Designed the end to end UI/UX for the Kompas NFT project within the Product and Development division at Kompas Daily.</p><h2>The Fix</h2><p>Conducted extensive competitor analysis, established the core design system, and collaborated seamlessly with the engineering team to ensure high fidelity implementation.</p><h2>Impact</h2><p>Successfully launched the platform, delivering a smooth and intuitive experience for users navigating the NFT ecosystem.</p>'
+    body: '<h2>Context</h2><p>In 2023, a Kompas ID journalist wanted to transform his poignant narrative about a detained immigrant family into an immersive digital format. The dual objective was to deeply engage the public with the story while driving premium subscription growth for the platform.</p><h2>The Fix</h2><p>Working under a tight 12-day design sprint, I collaborated across editorial, multimedia, and development teams to craft a seamless reading experience. Key design decisions included:</p><ul><li><strong>Multimedia Integration:</strong> Harmoniously blending text, audio, and visual assets without overshadowing the core narrative.</li><li><strong>Sectioned Storytelling:</strong> Breaking the extensive narrative into digestible chapters, allowing users to navigate at their own pace.</li><li><strong>Dark Theme UI:</strong> Implemented based on user research to specifically reduce eye strain during long-form reading sessions.</li></ul><h2>Impact</h2><p>The interactive feature drew over <strong>82,000 readers</strong> within its first month and directly contributed to a <strong>5% increase in subscription revenue</strong> for Kompas ID. User feedback heavily highlighted the improved readability and emotional immersion.</p>'
   },
   {
     tag: 'Graphic Design',
