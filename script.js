@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // --- PROJECT FILTER LOGIC ---
   const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectRows = document.querySelectorAll('.project-row');
+  const projectRows = document.querySelectorAll('.project-card');
 
   if (filterBtns.length > 0) {
     filterBtns.forEach(btn => {
@@ -195,6 +195,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  // --- ASCII GENERATIVE EFFECT ---
+  const asciiContainer = document.getElementById('asciiEffect');
+  if (asciiContainer) {
+    const chars = "01<>{}[]@#$%&*/\\ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const charCount = 65; 
+    
+    for (let i = 0; i < charCount; i++) {
+      let span = document.createElement('span');
+      span.className = 'ascii-char';
+      span.innerText = chars[Math.floor(Math.random() * chars.length)];
+      
+      span.style.left = (Math.random() * 100) + '%';
+      span.style.top = (Math.random() * 100) + '%';
+      
+      span.style.animationDelay = (Math.random() * 4) + 's';
+      span.style.animationDuration = (Math.random() * 2 + 2) + 's';
+      span.style.fontSize = (Math.random() * 14 + 8) + 'px';
+      
+      asciiContainer.appendChild(span);
+    }
+
+    setInterval(() => {
+      const spans = asciiContainer.getElementsByTagName('span');
+      const randomSpan = spans[Math.floor(Math.random() * spans.length)];
+      if (randomSpan) {
+        randomSpan.innerText = chars[Math.floor(Math.random() * chars.length)];
+      }
+    }, 60); 
+  }
+
 });
 
 // --- PROJECT DATA ---
@@ -207,7 +237,7 @@ var projects = [
     role: 'UI/UX Designer',
     tools: 'Figma',
     cover: 'thumbnail_1.jpg',
-    body: '<h2>Context</h2><p>In 2023, a Kompas ID journalist wanted to transform his poignant narrative about a detained immigrant family into an immersive digital format. The dual objective was to deeply engage the public with the story while driving premium subscription growth for the platform.</p><h2>The Fix</h2><p>Working under a tight 12-day design sprint, I collaborated across editorial, multimedia, and development teams to craft a seamless reading experience. Key design decisions included:</p><ul><li><strong>Multimedia Integration:</strong> Harmoniously blending text, audio, and visual assets without overshadowing the core narrative.</li><li><strong>Sectioned Storytelling:</strong> Breaking the extensive narrative into digestible chapters, allowing users to navigate at their own pace.</li><li><strong>Dark Theme UI:</strong> Implemented based on user research to specifically reduce eye strain during long-form reading sessions.</li></ul><h2>Impact</h2><p>The interactive feature drew over <strong>82,000 readers</strong> within its first month and directly contributed to a <strong>5% increase in subscription revenue</strong> for Kompas ID. User feedback heavily highlighted the improved readability and emotional immersion.</p>'
+    body: '<h2>Context</h2><p>In 2023, a Kompas ID journalist wanted to transform his poignant narrative about a detained immigrant family into an immersive digital format. The dual objective was to deeply engage the public with the story while driving premium subscription growth for the platform.</p><h2>The Fix</h2><p>Working under a tight 12 day design sprint, I collaborated across editorial, multimedia, and development teams to craft a seamless reading experience. Key design decisions included:</p><ul><li><strong>Multimedia Integration:</strong> Harmoniously blending text, audio, and visual assets without overshadowing the core narrative.</li><li><strong>Sectioned Storytelling:</strong> Breaking the extensive narrative into digestible chapters, allowing users to navigate at their own pace.</li><li><strong>Dark Theme UI:</strong> Implemented based on user research to specifically reduce eye strain during long form reading sessions.</li></ul><h2>Impact</h2><p>The interactive feature drew over <strong>82,000 readers</strong> within its first month and directly contributed to a <strong>5% increase in subscription revenue</strong> for Kompas ID. User feedback heavily highlighted the improved readability and emotional immersion.</p>'
   },
   {
     tag: 'Graphic Design',
@@ -222,22 +252,22 @@ var projects = [
   {
     tag: 'Visual Art',
     title: 'Real Time Audio Visualizer & <em>Blob Tracking System</em>',
-    sub: 'An interactive audio visual experiment that responds to motion and sound in real-time.',
+    sub: 'An interactive audio visual experiment that responds to motion and sound in real time.',
     year: '2024',
     role: 'Creative Technologist',
     tools: 'TouchDesigner',
     cover: 'thumbnail_3.mp4',
-    body: '<h2>Context</h2><p>I wanted to explore the relationship between physical movement and digital soundscapes. The goal was to build a system where the <strong>Real Time Audio Visualizer & Blob Tracking System</strong> acts as a digital mirror to human interaction.</p><h2>The Fix</h2><p>I built a custom setup using TouchDesigner that processes two live inputs simultaneously:</p><ul><li><strong>Optical Blob Tracking:</strong> Taking live camera feeds to map out human silhouettes and motion data.</li><li><strong>Audio Reactivity:</strong> Analyzing sound frequencies to distort and drive the 3D geometries and particle behaviors in real-time.</li></ul><h2>Impact</h2><p>The result is a highly immersive, tactile experience that bridges the physical and digital worlds. It proves how complex node-based systems can translate into organic, fluid visual art.</p>'
+    body: '<h2>Context</h2><p>I wanted to explore the relationship between physical movement and digital soundscapes. The goal was to build a system where the <strong>Real Time Audio Visualizer & Blob Tracking System</strong> acts as a digital mirror to human interaction.</p><h2>The Fix</h2><p>I built a custom setup using TouchDesigner that processes two live inputs simultaneously:</p><ul><li><strong>Optical Blob Tracking:</strong> Taking live camera feeds to map out human silhouettes and motion data.</li><li><strong>Audio Reactivity:</strong> Analyzing sound frequencies to distort and drive the 3D geometries and particle behaviors in real time.</li></ul><h2>Impact</h2><p>The result is a highly immersive, tactile experience that bridges the physical and digital worlds. It proves how complex node based systems can translate into organic, fluid visual art.</p>'
   },
   {
     tag: 'UI/UX Design',
     title: 'Mobile App <em>Flow</em>',
-    sub: 'A mobile app design project focused on delightful micro-interactions and seamless user flows.',
+    sub: 'A mobile app design project focused on delightful micro interactions and seamless user flows.',
     year: '2024',
     role: 'Product Designer',
     tools: 'Figma, Principle',
     cover: 'thumbnail_4.jpg',
-    body: '<h2>Context</h2><p>Describe the problem users were facing with the mobile app.</p><h2>The Fix</h2><p>Explain how you simplified the flow and integrated micro-interactions.</p><h2>Impact</h2><p>Did engagement or completion rates improve?</p>'
+    body: '<h2>Context</h2><p>Describe the problem users were facing with the mobile app.</p><h2>The Fix</h2><p>Explain how you simplified the flow and integrated micro interactions.</p><h2>Impact</h2><p>Did engagement or completion rates improve?</p>'
   }
 ];
 
