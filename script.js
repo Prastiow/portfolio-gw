@@ -248,7 +248,7 @@ const projects = [
     year: '2023',
     role: 'UI/UX Designer',
     tools: 'Figma',
-    cover: 'thumbnail_1.jpg',
+    cover: 'thumbnail_1.webp',
     body: '<h2>The Context</h2><p>In 2023, a Kompas ID journalist wanted to elevate his written narrative about a detained immigrant family under UNHCR into an interactive format. The goal was twofold: create a deeply emotional, immersive experience for the Indonesian public, and strategically drive premium subscription growth for the platform.</p><h2>The Challenge</h2><p>We operated on a strict <strong>one month timeline</strong>, with only <strong>12 days allocated for the design phase</strong>. The core challenge was finding the perfect balance, integrating rich multimedia (sound and visuals) without overshadowing the extensive journalistic text, while aligning the Editorial, Multimedia, and Tech teams.</p><h2>Design Decisions</h2><ul><li><strong>Dark Theme UI:</strong> Chosen based on user research to specifically reduce eye strain and improve focus during long form reading sessions.</li><li><strong>Sectioned Storytelling:</strong> I divided the extensive narrative into digestible, paced segments, allowing users to navigate and absorb the heavy story comfortably.</li><li><strong>Seamless Integration:</strong> Rapidly prototyped and integrated all audio visual assets by day 12, ensuring a harmonious blend that enhanced emotional resonance.</li></ul><h2>The Impact</h2><p>The interactive feature successfully drew over <strong>82,000 readers</strong> within its first month of release. The engaging format validated our design approach, directly contributing to a <strong>5% increase in subscription revenue</strong> for Kompas ID. Readers specifically highlighted the improved readability and the powerful immersive experience.</p>'
   },
   {
@@ -258,7 +258,7 @@ const projects = [
     year: '2022',
     role: 'UI/UX Designer',
     tools: 'Figma',
-    cover: 'thumbnail_2.jpg',
+    cover: 'thumbnail_2.webp',
     body: '<h2>The Context</h2><p>To celebrate National Film Day, Kompas.id aimed to create premium interactive content that not only engaged users but also drove subscription revenue. As the dedicated UI/UX Designer for the Technical Squad, I was tasked with conceptualizing and designing this experience from the ground up.</p><h2>The Challenge</h2><p>With a strict one month timeline for both design and development, the initial phase started with zero existing data or predefined directions. I had to rapidly research, ideate, and validate concepts while ensuring technical feasibility with the developers.</p><h2>Design Process & Decisions</h2><ul><li><strong>Gamification Strategy:</strong> After pitching five different concepts, we proceeded with a film guessing game. It was designed to be intuitive, educational, and highly engaging.</li><li><strong>Seamless Integration:</strong> Integrated clear, prominent subscription offers within the game flow without disrupting the user experience.</li><li><strong>Cross Device Accessibility:</strong> Ensured flawless gameplay and readability across desktop, tablet, and mobile platforms.</li></ul><h2>The Impact</h2><p>The interactive gamified article attracted over <strong>40,000 users</strong> within just two weeks of launch. More importantly, it successfully drove a <strong>4% increase in subscription growth</strong>, proving the effectiveness of gamification in journalistic platforms.</p>'
   },
   {
@@ -278,7 +278,7 @@ const projects = [
     year: '2022',
     role: 'UI/UX Designer',
     tools: 'Figma',
-    cover: 'thumbnail_4.jpg',
+    cover: 'thumbnail_4.webp',
     body: '<h2>The Context</h2><p>To coincide with its 57th anniversary, Kompas Daily launched its first ever NFT collections: "Indonesia/57 Peristiwa" (historical front pages) and "Kompas X Rakajana" (exclusive illustrations). The goal was to connect traditional journalism with the booming Web3 market and establish a new digital revenue stream.</p><h2>The Challenge</h2><p>I had exactly <strong>12 days to design the entire platform</strong> before development handoff. The project required intense cross functional coordination between Business, Editorial, Multimedia, and a split squad of 7 developers managing concurrent projects.</p><h2>Research & Strategy</h2><p>I conducted competitive analyses on major media NFT platforms. To tailor the experience, I developed three distinct user personas ranging from early adopter Gen Z flippers to millennial startup executives. This helped prioritize key information: project utility, purchasing guides, and community trust building.</p><h2>Design Decisions</h2><ul><li><strong>Information Architecture:</strong> Focused heavily on clarity showcasing the collections, detailing the NFTs, providing step by step purchasing guides, and routing users to the OpenSea page and Discord community.</li><li><strong>Responsive & Accessible:</strong> Built a robust, multi device UI that maintained aesthetic integrity whether viewed on a massive desktop monitor or a smartphone.</li></ul><h2>The Impact</h2><p>The platform successfully launched on schedule, resulting in <strong>2 out of the 3 digital NFT collections completely selling out</strong>. Furthermore, it successfully onboarded a new demographic into the newly established Kompas NFT Discord community.</p>'
   }
 ];
