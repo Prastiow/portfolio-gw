@@ -239,16 +239,16 @@ h1 em { font-style: italic; }
 .ascii-effect {
   position: absolute;
   inset: 0;
-  z-index: 3; /* UBAH INI: Pastikan z-index 3 supaya ada DI DEPAN foto */
+  z-index: 3;
   pointer-events: none;
   overflow: hidden;
-  color: var(--text-secondary); /* Pakai warna yang kontras */
-  opacity: 0.6; /* Supaya nggak terlalu nutupin muka */
+  color: var(--text-secondary); 
+  opacity: 0.6; 
 }
 
 .about-hero-photo img {
   position: relative;
-  z-index: 2; /* Foto sekarang posisinya di belakang efek ASCII */
+  z-index: 2; 
   width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(100%); transition: filter 0.5s ease, transform 0.5s ease;
 }
 
@@ -257,7 +257,7 @@ h1 em { font-style: italic; }
 /* Vibe Matrix/Terminal pas masuk Raw Mode */
 body.raw-mode .ascii-effect {
   color: var(--green); 
-  mix-blend-mode: screen; /* Bikin efek nyalanya makin pop-up di layar gelap */
+  mix-blend-mode: screen; 
   opacity: 0.85;
 }
 
@@ -297,9 +297,6 @@ body.raw-mode .ascii-effect {
 .exp-role { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 3px; }
 .exp-company { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
 .exp-desc { font-size: 13px; color: var(--text-tertiary); line-height: 1.6; }
-.values-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
-.value-pill { padding: 7px 14px; border-radius: 99px; border: 0.5px solid var(--border); background: var(--bg-card); font-size: 13px; color: var(--text-secondary); transition: border-color 0.2s, color 0.2s, background-color 0.3s; }
-.value-pill:hover { border-color: var(--border-hover); color: var(--text); }
 
 /* ===== PROJECTS ===== */
 .project-filters { display: flex; gap: 12px; margin-bottom: 2.5rem; flex-wrap: wrap; }
@@ -437,28 +434,6 @@ body.raw-mode .ascii-effect {
 .overlay-body p { margin-bottom: 1.5rem; }
 .overlay-body h2 { font-size: 20px; font-weight: 400; letter-spacing: -0.02em; color: var(--text); margin-bottom: 1rem; margin-top: 2.5rem; }
 
-/* ===== TOOLS ===== */
-.tools-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
-.tool-pill { display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 99px; border: 0.5px solid var(--border); background: var(--bg-card); font-size: 13px; color: var(--text-secondary); transition: border-color 0.2s, color 0.2s, background-color 0.3s; }
-.tool-pill:hover { border-color: var(--border-hover); color: var(--text); }
-.tool-pill svg, .tool-pill img { width: 16px; height: 16px; flex-shrink: 0; }
-
-/* ===== FAQ ===== */
-.faq-section { padding: 5rem 0; }
-.faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
-.faq-heading { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.15; position: sticky; top: 80px; }
-.faq-heading em { font-style: italic; }
-.faq-list { display: flex; flex-direction: column; }
-.faq-item { border-top: 0.5px solid var(--border); cursor: pointer; transition: background-color 0.2s, border-color 0.3s; }
-.faq-item:last-child { border-bottom: 0.5px solid var(--border); }
-.faq-question { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 0; gap: 1rem; }
-.faq-question-text { font-size: 15px; color: var(--text-secondary); transition: color 0.2s; line-height: 1.4; }
-.faq-item:hover .faq-question-text { color: var(--text); }
-.faq-arrow { width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-tertiary); transition: transform 0.3s ease, border-color 0.2s, color 0.2s; }
-.faq-item.open .faq-arrow { transform: rotate(45deg); border-color: var(--border-hover); color: var(--text); }
-.faq-answer { font-size: 14px; color: var(--text-secondary); line-height: 1.75; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.25s ease; padding-bottom: 0; }
-.faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.4rem; }
-
 /* ===== FOOTER ===== */
 footer { border-top: 0.5px solid var(--border); padding: 3rem 0 2.5rem; transition: border-color 0.3s; }
 .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem; }
@@ -570,8 +545,7 @@ body.raw-mode img, body.raw-mode video { filter: grayscale(20%) contrast(110%); 
   .overlay-content { padding: 0 1.25rem 4rem; }
   .overlay-meta { gap: 1.25rem; flex-wrap: wrap; }
   .overlay-h1 { font-size: 1.8rem; }
-  .faq-layout { grid-template-columns: 1fr; gap: 2rem; }
-  .faq-heading { position: static; font-size: 1.8rem; }
+  
   .tools-wrap { gap: 8px; }
   .tool-pill { font-size: 12px; padding: 7px 12px; }
   .footer-links { align-items: flex-start; }

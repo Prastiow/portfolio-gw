@@ -18,6 +18,12 @@
 
   <meta name="title" content="Tri Prastio Nugroho Designer & Creative Technologist">
   <meta name="description" content="I work at the intersection of interaction design, motion, and generative visuals. Based in BSD, Tangerang.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://triprastio.netlify.app/"> 
+  <meta property="og:title" content="Tri Prastio Nugroho Designer & Creative Technologist">
+  <meta property="og:description" content="I work at the intersection of interaction design, motion, and generative visuals. Based in BSD, Tangerang.">
+  <meta property="og:image" content="thumbnail_1.jpg">
 </head>
 <body>
 
@@ -43,7 +49,7 @@
         <a href="about.html" class="magnetic">About</a>
       </div>
       <button id="themeToggle" class="btn magnetic theme-toggle-btn">Raw Mode</button>
-      <a href="https://drive.google.com/uc?export=download&id=1hGrVFO_qDe0kicB7vvzRSfa76KJ-wdGf" class="mobile-cta" id="mobileCta" target="_blank">Download CV</a>
+      <a href="https://drive.google.com/uc?export=download&id=1hGrVFO_qDe0kicB7vvzRSfa76KJ-wdGf" class="mobile-cta" id="mobileCta" target="_blank" rel="noopener noreferrer">Download CV</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -68,7 +74,7 @@
         Hi! I blend logical problem solving with playful execution to craft compelling digital experiences from seamless product design to real time generative visuals.
       </p>
       <div class="hero-actions">
-        <a href="https://drive.google.com/uc?export=download&id=1hGrVFO_qDe0kicB7vvzRSfa76KJ-wdGf" class="btn btn-primary magnetic" target="_blank">Download CV</a>
+        <a href="https://drive.google.com/uc?export=download&id=1hGrVFO_qDe0kicB7vvzRSfa76KJ-wdGf" class="btn btn-primary magnetic" target="_blank" rel="noopener noreferrer">Download CV</a>
         <a href="about.html" class="btn magnetic">About Me</a>
       </div>
     </div>
@@ -119,7 +125,7 @@
     </div>
 
     <div class="projects-grid">
-      <div class="project-card" data-category="uiux" onclick="openProject(0)">
+      <div class="project-card" tabindex="0" role="button" aria-label="View Journey of Immigrants project" data-category="uiux" onclick="openProject(0)" onkeypress="if(event.key === 'Enter') openProject(0)">
         <div class="project-card-img">
           <img src="thumbnail_1.jpg" alt="Journey of Immigrant Families Thumbnail">
         </div>
@@ -132,7 +138,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-category="uiux" onclick="openProject(1)">
+      <div class="project-card" tabindex="0" role="button" aria-label="View Gamified Article project" data-category="uiux" onclick="openProject(1)" onkeypress="if(event.key === 'Enter') openProject(1)">
         <div class="project-card-img">
           <img src="thumbnail_2.jpg" alt="Gamified Article Thumbnail">
         </div>
@@ -145,7 +151,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-category="visual" onclick="openProject(2)">
+      <div class="project-card" tabindex="0" role="button" aria-label="View Audio Visual project" data-category="visual" onclick="openProject(2)" onkeypress="if(event.key === 'Enter') openProject(2)">
         <div class="project-card-img">
           <video src="thumbnail_3.mp4" autoplay loop muted playsinline></video>
         </div>
@@ -158,7 +164,7 @@
         </div>
       </div>
 
-      <div class="project-card" data-category="uiux" onclick="openProject(3)">
+      <div class="project-card" tabindex="0" role="button" aria-label="View Kompas NFT project" data-category="uiux" onclick="openProject(3)" onkeypress="if(event.key === 'Enter') openProject(3)">
         <div class="project-card-img">
           <img src="thumbnail_4.jpg" alt="Kompas NFT Thumbnail">
         </div>
@@ -208,8 +214,8 @@
     <div class="footer-inner">
       <div class="footer-cta">Currently open for new projects. Let's chat over a virtual coffee.</div>
       <div class="footer-links">
-        <a href="https://www.instagram.com/prsteow/?hl=en" target="_blank">Instagram ↗</a>
-        <a href="https://www.linkedin.com/in/triprastion/" target="_blank">LinkedIn ↗</a>
+        <a href="https://www.instagram.com/prsteow/?hl=en" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+        <a href="https://www.linkedin.com/in/triprastion/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         <a href="mailto:contact@example.com">Email ↗</a>
       </div>
     </div>

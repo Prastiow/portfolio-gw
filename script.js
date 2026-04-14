@@ -52,15 +52,19 @@
   }, 100);
 })();
 
-
 document.addEventListener('DOMContentLoaded', function() {
 
-  // --- MAGNETIC BUTTON LOGIC ---
+  // --- MAGNETIC BUTTON LOGIC (OPTIMIZED) ---
   const magneticElements = document.querySelectorAll('.magnetic');
 
   magneticElements.forEach((elem) => {
+    let rect;
+    elem.addEventListener('mouseenter', () => {
+      rect = elem.getBoundingClientRect(); // Cache rect on hover
+    });
+
     elem.addEventListener('mousemove', (e) => {
-      const rect = elem.getBoundingClientRect();
+      if (!rect) rect = elem.getBoundingClientRect(); // Fallback
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
       elem.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
@@ -68,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     elem.addEventListener('mouseleave', () => {
       elem.style.transform = 'translate(0px, 0px)';
+      rect = null;
     });
   });
   
@@ -118,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // --- HAMBURGER MENU LOGIC ---
-  var hamburger = document.getElementById('hamburger');
-  var mobileMenu = document.getElementById('mobileMenu');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
   
   if (hamburger && mobileMenu) {
     hamburger.addEventListener('click', function() {
@@ -151,31 +156,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // --- SCROLL ACTIONS & PROGRESS BAR ---
-  var mobileCta = document.getElementById('mobileCta');
-  var backToTop = document.getElementById('backToTop');
-  var heroElement = document.querySelector('.hero') || document.querySelector('.about-hero');
-  var scrollProgressBar = document.getElementById('scrollProgressBar'); 
+  // --- SCROLL ACTIONS & PROGRESS BAR (THROTTLED) ---
+  const mobileCta = document.getElementById('mobileCta');
+  const backToTop = document.getElementById('backToTop');
+  const heroElement = document.querySelector('.hero') || document.querySelector('.about-hero');
+  const scrollProgressBar = document.getElementById('scrollProgressBar'); 
 
+  let ticking = false;
   window.addEventListener('scroll', function() {
-    var scrollPos = window.scrollY;
-    var triggerHeight = heroElement ? heroElement.offsetHeight : 300;
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        const scrollPos = window.scrollY;
+        const triggerHeight = heroElement ? heroElement.offsetHeight : 300;
 
-    if (mobileCta) {
-      if (scrollPos > triggerHeight) mobileCta.classList.add('visible');
-      else mobileCta.classList.remove('visible');
-    }
+        if (mobileCta) {
+          if (scrollPos > triggerHeight) mobileCta.classList.add('visible');
+          else mobileCta.classList.remove('visible');
+        }
 
-    if (backToTop) {
-      if (scrollPos > 500) backToTop.classList.add('visible');
-      else backToTop.classList.remove('visible');
-    }
+        if (backToTop) {
+          if (scrollPos > 500) backToTop.classList.add('visible');
+          else backToTop.classList.remove('visible');
+        }
 
-    if (scrollProgressBar) {
-      var totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
-      var windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      var scrollPercent = (totalScroll / windowHeight) * 100;
-      scrollProgressBar.style.width = scrollPercent + '%';
+        if (scrollProgressBar) {
+          const totalScroll = document.documentElement.scrollTop || document.body.scrollTop;
+          const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          const scrollPercent = (totalScroll / windowHeight) * 100;
+          scrollProgressBar.style.width = scrollPercent + '%';
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
   });
 
@@ -228,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // --- PROJECT DATA ---
-var projects = [
+const projects = [
   {
     tag: 'UI/UX Design',
     title: 'Journey of <em>Immigrant Families</em>',
@@ -272,9 +284,9 @@ var projects = [
 ];
 
 function openProject(idx) {
-  var overlay = document.getElementById('projectOverlay');
+  const overlay = document.getElementById('projectOverlay');
   if (!overlay) return;
-  var p = projects[idx];
+  const p = projects[idx];
   document.getElementById('overlayTag').textContent = p.tag;
   document.getElementById('overlayTitle').innerHTML = p.title;
   document.getElementById('overlayTitleNav').innerHTML = p.title;
@@ -283,14 +295,14 @@ function openProject(idx) {
   document.getElementById('overlayRole').textContent = p.role;
   document.getElementById('overlayTools').textContent = p.tools;
   
-  var coverElement = document.getElementById('overlayCover');
+  const coverElement = document.getElementById('overlayCover');
   if (p.cover.endsWith('.mp4') || p.cover.endsWith('.webm')) {
     coverElement.innerHTML = 
       '<video id="overlayVideo" src="' + p.cover + '" autoplay loop muted playsinline></video>' +
       '<button id="muteToggleBtn" class="video-mute-btn">Unmute</button>';
       
-    var videoEl = document.getElementById('overlayVideo');
-    var muteBtn = document.getElementById('muteToggleBtn');
+    const videoEl = document.getElementById('overlayVideo');
+    const muteBtn = document.getElementById('muteToggleBtn');
     
     muteBtn.addEventListener('click', function() {
       videoEl.muted = !videoEl.muted;
@@ -312,22 +324,16 @@ function openProject(idx) {
 }
 
 function closeProject() {
-  var overlay = document.getElementById('projectOverlay');
+  const overlay = document.getElementById('projectOverlay');
   if (overlay) {
     overlay.classList.remove('active');
     document.body.style.overflow = 'auto';
     
-    var videoEl = document.getElementById('overlayVideo');
+    const videoEl = document.getElementById('overlayVideo');
     if (videoEl) {
       videoEl.pause();
       videoEl.removeAttribute('src'); 
       videoEl.load();
     }
   }
-}
-
-function toggleFaq(item) {
-  var isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
-  if (!isOpen) item.classList.add('open');
 }
