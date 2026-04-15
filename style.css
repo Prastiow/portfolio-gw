@@ -553,3 +553,19 @@ body.raw-mode img, body.raw-mode video { filter: grayscale(20%) contrast(110%); 
   .back-to-top { bottom: 20px; right: 20px; width: 40px; height: 40px; }
   section { padding: 3.5rem 0; }
 }
+
+/* Penambahan Class Baru untuk Link Project */
+.overlay-link-btn {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* Jarak pas, nggak dempet */
+}
+.overlay-link-btn svg {
+  width: 14px; /* Ukuran icon presisi */
+  height: 14px;
+  transition: transform 0.2s ease;
+}
+.overlay-link-btn:hover svg {
+  transform: translate(2px, -2px); /* Efek panah nembak ke atas saat hover */
+}
