@@ -1,57 +1,5 @@
 /* script.js */
 
-// --- GENERATIVE PRELOADER LOGIC ---
-(function() {
-  const preloader = document.getElementById('generative-preloader');
-  if (!preloader) return;
-
-  if (sessionStorage.getItem('visitedBefore')) {
-    preloader.style.display = 'none'; 
-    document.body.style.overflow = 'auto'; 
-    return;
-  }
-
-  document.body.style.overflow = 'hidden'; 
-
-  const preloaderText = document.getElementById('preloader-text');
-  const preloaderBar = document.getElementById('preloader-bar');
-  const finalString = "INITIATING_SYSTEM...";
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
-  
-  let progress = 0;
-  let textIterations = 0;
-
-  const textInterval = setInterval(() => {
-    preloaderText.innerText = finalString.split("").map((char, index) => {
-      if (index < textIterations) return finalString[index];
-      return chars[Math.floor(Math.random() * chars.length)];
-    }).join("");
-
-    if (textIterations >= finalString.length) clearInterval(textInterval);
-    textIterations += 1 / 2;
-  }, 40);
-
-  const progressInterval = setInterval(() => {
-    progress += Math.random() * 15; 
-    if (progress > 100) progress = 100;
-    preloaderBar.style.width = `${progress}%`;
-
-    if (progress === 100) {
-      clearInterval(progressInterval);
-      
-      setTimeout(() => {
-        preloaderText.innerText = "SYSTEM_READY";
-        
-        setTimeout(() => {
-           preloader.classList.add('hidden');
-           document.body.style.overflow = 'auto';
-           sessionStorage.setItem('visitedBefore', 'true');
-        }, 400);
-      }, 300);
-    }
-  }, 100);
-})();
-
 document.addEventListener('DOMContentLoaded', function() {
 
   // --- MAGNETIC BUTTON LOGIC (OPTIMIZED) ---
